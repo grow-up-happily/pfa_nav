@@ -1,0 +1,9 @@
+# ======================================
+# 构建、日志、临时文件
+# ======================================
+/build/          # 构建输出目录（如 CMake、Gradle、Webpack）
+/bag/            # 数据包或临时存储目录
+*.log            # 所有日志文件
+/log/           # 日志目录
+/install/        # 安装目录（如 make install 生成的文件）
+/src/pb2025_sentry_nav/pb2025_nav_bringup/pcd/simulation

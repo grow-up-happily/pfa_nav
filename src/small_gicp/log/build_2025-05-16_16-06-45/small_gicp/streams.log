@@ -1,0 +1,90 @@
+[0.010s] Invoking command in '/home/yy/sight/pb2025/src/small_gicp/build/small_gicp': CMAKE_PREFIX_PATH=/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake /home/yy/sight/pb2025/src/small_gicp -DCMAKE_BUILD_TYPE=release -DCMAKE_INSTALL_PREFIX=/home/yy/sight/pb2025/src/small_gicp/install/small_gicp
+[0.113s] -- The C compiler identification is GNU 11.4.0
+[0.192s] -- The CXX compiler identification is GNU 11.4.0
+[0.199s] -- Detecting C compiler ABI info
+[0.257s] -- Detecting C compiler ABI info - done
+[0.262s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.262s] -- Detecting C compile features
+[0.263s] -- Detecting C compile features - done
+[0.265s] -- Detecting CXX compiler ABI info
+[0.324s] -- Detecting CXX compiler ABI info - done
+[0.329s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.329s] -- Detecting CXX compile features
+[0.330s] -- Detecting CXX compile features - done
+[0.558s] -- Found OpenMP_C: -fopenmp (found version "4.5") 
+[0.622s] -- Found OpenMP_CXX: -fopenmp (found version "4.5") 
+[0.622s] -- Found OpenMP: TRUE (found version "4.5")  
+[0.632s] -- Configuring done
+[0.634s] -- Generating done
+[0.635s] -- Build files have been written to: /home/yy/sight/pb2025/src/small_gicp/build/small_gicp
+[0.640s] Invoked command in '/home/yy/sight/pb2025/src/small_gicp/build/small_gicp' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake /home/yy/sight/pb2025/src/small_gicp -DCMAKE_BUILD_TYPE=release -DCMAKE_INSTALL_PREFIX=/home/yy/sight/pb2025/src/small_gicp/install/small_gicp
+[0.641s] Invoking command in '/home/yy/sight/pb2025/src/small_gicp/build/small_gicp': CMAKE_PREFIX_PATH=/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --build /home/yy/sight/pb2025/src/small_gicp/build/small_gicp -- -j20 -l20
+[0.688s] [ 66%] [32mBuilding CXX object CMakeFiles/small_gicp.dir/src/small_gicp/registration/registration.cpp.o[0m
+[0.688s] [ 66%] [32mBuilding CXX object CMakeFiles/small_gicp.dir/src/small_gicp/registration/registration_helper.cpp.o[0m
+[9.499s] [100%] [32m[1mLinking CXX shared library libsmall_gicp.so[0m
+[9.555s] [100%] Built target small_gicp
+[9.673s] Invoked command in '/home/yy/sight/pb2025/src/small_gicp/build/small_gicp' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --build /home/yy/sight/pb2025/src/small_gicp/build/small_gicp -- -j20 -l20
+[9.680s] Invoking command in '/home/yy/sight/pb2025/src/small_gicp/build/small_gicp': CMAKE_PREFIX_PATH=/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --install /home/yy/sight/pb2025/src/small_gicp/build/small_gicp
+[9.686s] -- Install configuration: "release"
+[9.686s] -- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include
+[9.686s] -- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp
+[9.686s] -- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/registration
+[9.686s] -- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/registration/registration_result.hpp
+[9.686s] -- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/registration/reduction_omp.hpp
+[9.686s] -- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/registration/reduction.hpp
+[9.686s] -- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/registration/registration.hpp
+[9.686s] -- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/registration/registration_helper.hpp
+[9.686s] -- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/registration/termination_criteria.hpp
+[9.686s] -- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/registration/optimizer.hpp
+[9.687s] -- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/registration/rejector.hpp
+[9.687s] -- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/registration/reduction_tbb.hpp
+[9.687s] -- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/points
+[9.687s] -- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/points/traits.hpp
+[9.687s] -- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/points/point_cloud.hpp
+[9.687s] -- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/points/eigen.hpp
+[9.687s] -- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/factors
+[9.689s] -- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/factors/icp_factor.hpp
+[9.689s] -- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/factors/plane_icp_factor.hpp
+[9.690s] -- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/factors/general_factor.hpp
+[9.690s] -- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/factors/robust_kernel.hpp
+[9.690s] -- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/factors/gicp_factor.hpp
+[9.690s] -- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/benchmark
+[9.690s] -- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/benchmark/benchmark_odom.hpp
+[9.690s] -- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/benchmark/read_points.hpp
+[9.690s] -- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/benchmark/benchmark.hpp
+[9.690s] -- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/pcl
+[9.690s] -- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/pcl/pcl_point_traits.hpp
+[9.690s] -- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/pcl/pcl_point.hpp
+[9.690s] -- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/pcl/pcl_registration_impl.hpp
+[9.690s] -- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/pcl/pcl_proxy.hpp
+[9.690s] -- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/pcl/pcl_registration.hpp
+[9.691s] -- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/ann
+[9.691s] -- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/ann/kdtree_tbb.hpp
+[9.691s] -- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/ann/knn_result.hpp
+[9.691s] -- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/ann/traits.hpp
+[9.691s] -- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/ann/kdtree_omp.hpp
+[9.691s] -- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/ann/sequential_voxelmap_accessor.hpp
+[9.691s] -- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/ann/projection.hpp
+[9.691s] -- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/ann/kdtree.hpp
+[9.691s] -- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/ann/gaussian_voxelmap.hpp
+[9.691s] -- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/ann/flat_container.hpp
+[9.691s] -- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/ann/incremental_voxelmap.hpp
+[9.691s] -- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/ann/projective_search.hpp
+[9.691s] -- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/util
+[9.692s] -- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/util/downsampling.hpp
+[9.692s] -- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/util/lie.hpp
+[9.692s] -- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/util/sort_tbb.hpp
+[9.692s] -- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/util/normal_estimation.hpp
+[9.692s] -- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/util/normal_estimation_omp.hpp
+[9.692s] -- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/util/fast_floor.hpp
+[9.692s] -- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/util/downsampling_omp.hpp
+[9.692s] -- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/util/vector3i_hash.hpp
+[9.693s] -- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/util/downsampling_tbb.hpp
+[9.693s] -- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/util/normal_estimation_tbb.hpp
+[9.693s] -- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/util/sort_omp.hpp
+[9.693s] -- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/lib/libsmall_gicp.so
+[9.693s] -- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/lib/cmake/small_gicp/small_gicp-targets.cmake
+[9.694s] -- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/lib/cmake/small_gicp/small_gicp-targets-release.cmake
+[9.694s] -- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/lib/cmake/small_gicp/small_gicp-config.cmake
+[9.694s] -- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/lib/cmake/small_gicp/small_gicp-config-version.cmake
+[9.696s] Invoked command in '/home/yy/sight/pb2025/src/small_gicp/build/small_gicp' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --install /home/yy/sight/pb2025/src/small_gicp/build/small_gicp

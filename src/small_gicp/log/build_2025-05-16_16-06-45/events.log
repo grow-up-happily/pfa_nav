@@ -1,0 +1,194 @@
+[0.000000] (-) TimerEvent: {}
+[0.000444] (small_gicp) JobQueued: {'identifier': 'small_gicp', 'dependencies': OrderedDict()}
+[0.000492] (small_gicp) JobStarted: {'identifier': 'small_gicp'}
+[0.009321] (small_gicp) JobProgress: {'identifier': 'small_gicp', 'progress': 'cmake'}
+[0.009571] (small_gicp) Command: {'cmd': ['/usr/bin/cmake', '/home/yy/sight/pb2025/src/small_gicp', '-DCMAKE_BUILD_TYPE=release', '-DCMAKE_INSTALL_PREFIX=/home/yy/sight/pb2025/src/small_gicp/install/small_gicp'], 'cwd': '/home/yy/sight/pb2025/src/small_gicp/build/small_gicp', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'CONDA_PROMPT_MODIFIER': '(base)', 'LANGUAGE': 'zh_CN:en_US:en', 'USER': 'yy', 'LC_TIME': 'zh_CN.UTF-8', 'XDG_SESSION_TYPE': 'x11', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/opt/openvdb_vendor/lib:/opt/ros/humble/lib', 'HOME': '/home/yy', 'CONDA_SHLVL': '1', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'LC_MONETARY': 'zh_CN.UTF-8', 'DBUS_STARTER_BUS_TYPE': 'session', 'SYSTEMD_EXEC_PID': '1843', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus,guid=ee9da54a385df526a42c4cdc68257dee', 'COLORTERM': 'truecolor', '_CE_M': '', 'MANDATORY_PATH': '/usr/share/gconf/ubuntu.mandatory.path', 'IM_CONFIG_PHASE': '1', 'ROS_DISTRO': 'humble', 'GTK_IM_MODULE': 'fcitx', 'LOGNAME': 'yy', '_': '/home/yy/anaconda3/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'DEFAULTS_PATH': '/usr/share/gconf/ubuntu.default.path', 'USERNAME': 'yy', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', '_CE_CONDA': '', 'ROS_LOCALHOST_ONLY': '0', 'WINDOWPATH': '2', 'PATH': '/home/yy/anaconda3/bin:/home/yy/anaconda3/condabin:/opt/ros/humble/bin:/root/anaconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/yy:@/tmp/.ICE-unix/1843,unix/yy:/tmp/.ICE-unix/1843', 'PAPERSIZE': 'a4', 'XDG_MENU_PREFIX': 'gnome-', 'LC_ADDRESS': 'zh_CN.UTF-8', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/56aa308f_787a_4608_84c9_50ba7a0b7627', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':0', 'LANG': 'zh_CN.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'LC_TELEPHONE': 'zh_CN.UTF-8', 'XMODIFIERS': '@im=fcitx', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/gdm/Xauthority', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'GNOME_TERMINAL_SERVICE': ':1.331', 'SSH_AGENT_LAUNCHER': 'gnome-keyring', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'GSETTINGS_SCHEMA_DIR': '/home/yy/anaconda3/share/glib-2.0/schemas', 'AMENT_PREFIX_PATH': '/opt/ros/humble', 'CONDA_PYTHON_EXE': '/home/yy/anaconda3/bin/python', 'SHELL': '/bin/bash', 'LC_NAME': 'zh_CN.UTF-8', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'CONDA_DEFAULT_ENV': 'base', 'LC_MEASUREMENT': 'zh_CN.UTF-8', 'GPG_AGENT_INFO': '/run/user/1000/gnupg/S.gpg-agent:0:1', 'LC_IDENTIFICATION': 'zh_CN.UTF-8', 'QT_IM_MODULE': 'fcitx', 'PWD': '/home/yy/sight/pb2025/src/small_gicp/build/small_gicp', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'CONDA_EXE': '/home/yy/anaconda3/bin/conda', 'CLUTTER_IM_MODULE': 'fcitx', 'DBUS_STARTER_ADDRESS': 'unix:path=/run/user/1000/bus,guid=ee9da54a385df526a42c4cdc68257dee', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'LC_NUMERIC': 'zh_CN.UTF-8', 'CONDA_PREFIX': '/home/yy/anaconda3', 'GSETTINGS_SCHEMA_DIR_CONDA_BACKUP': '', 'LC_PAPER': 'zh_CN.UTF-8', 'COLCON': '1', 'VTE_VERSION': '6800', 'CMAKE_PREFIX_PATH': '/opt/ros/humble'}), 'shell': False}
+[0.099886] (-) TimerEvent: {}
+[0.113156] (small_gicp) StdoutLine: {'line': b'-- The C compiler identification is GNU 11.4.0\n'}
+[0.192271] (small_gicp) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 11.4.0\n'}
+[0.199280] (small_gicp) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.199929] (-) TimerEvent: {}
+[0.257838] (small_gicp) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.262290] (small_gicp) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[0.262665] (small_gicp) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.263152] (small_gicp) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.265831] (small_gicp) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.300657] (-) TimerEvent: {}
+[0.324484] (small_gicp) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.329465] (small_gicp) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[0.329644] (small_gicp) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.330032] (small_gicp) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.401060] (-) TimerEvent: {}
+[0.501319] (-) TimerEvent: {}
+[0.558334] (small_gicp) StdoutLine: {'line': b'-- Found OpenMP_C: -fopenmp (found version "4.5") \n'}
+[0.601440] (-) TimerEvent: {}
+[0.622130] (small_gicp) StdoutLine: {'line': b'-- Found OpenMP_CXX: -fopenmp (found version "4.5") \n'}
+[0.622433] (small_gicp) StdoutLine: {'line': b'-- Found OpenMP: TRUE (found version "4.5")  \n'}
+[0.632155] (small_gicp) StdoutLine: {'line': b'-- Configuring done\n'}
+[0.634069] (small_gicp) StdoutLine: {'line': b'-- Generating done\n'}
+[0.635637] (small_gicp) StdoutLine: {'line': b'-- Build files have been written to: /home/yy/sight/pb2025/src/small_gicp/build/small_gicp\n'}
+[0.640538] (small_gicp) CommandEnded: {'returncode': 0}
+[0.640889] (small_gicp) JobProgress: {'identifier': 'small_gicp', 'progress': 'build'}
+[0.641289] (small_gicp) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/yy/sight/pb2025/src/small_gicp/build/small_gicp', '--', '-j20', '-l20'], 'cwd': '/home/yy/sight/pb2025/src/small_gicp/build/small_gicp', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'CONDA_PROMPT_MODIFIER': '(base)', 'LANGUAGE': 'zh_CN:en_US:en', 'USER': 'yy', 'LC_TIME': 'zh_CN.UTF-8', 'XDG_SESSION_TYPE': 'x11', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/opt/openvdb_vendor/lib:/opt/ros/humble/lib', 'HOME': '/home/yy', 'CONDA_SHLVL': '1', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'LC_MONETARY': 'zh_CN.UTF-8', 'DBUS_STARTER_BUS_TYPE': 'session', 'SYSTEMD_EXEC_PID': '1843', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus,guid=ee9da54a385df526a42c4cdc68257dee', 'COLORTERM': 'truecolor', '_CE_M': '', 'MANDATORY_PATH': '/usr/share/gconf/ubuntu.mandatory.path', 'IM_CONFIG_PHASE': '1', 'ROS_DISTRO': 'humble', 'GTK_IM_MODULE': 'fcitx', 'LOGNAME': 'yy', '_': '/home/yy/anaconda3/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'DEFAULTS_PATH': '/usr/share/gconf/ubuntu.default.path', 'USERNAME': 'yy', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', '_CE_CONDA': '', 'ROS_LOCALHOST_ONLY': '0', 'WINDOWPATH': '2', 'PATH': '/home/yy/anaconda3/bin:/home/yy/anaconda3/condabin:/opt/ros/humble/bin:/root/anaconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/yy:@/tmp/.ICE-unix/1843,unix/yy:/tmp/.ICE-unix/1843', 'PAPERSIZE': 'a4', 'XDG_MENU_PREFIX': 'gnome-', 'LC_ADDRESS': 'zh_CN.UTF-8', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/56aa308f_787a_4608_84c9_50ba7a0b7627', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':0', 'LANG': 'zh_CN.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'LC_TELEPHONE': 'zh_CN.UTF-8', 'XMODIFIERS': '@im=fcitx', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/gdm/Xauthority', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'GNOME_TERMINAL_SERVICE': ':1.331', 'SSH_AGENT_LAUNCHER': 'gnome-keyring', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'GSETTINGS_SCHEMA_DIR': '/home/yy/anaconda3/share/glib-2.0/schemas', 'AMENT_PREFIX_PATH': '/opt/ros/humble', 'CONDA_PYTHON_EXE': '/home/yy/anaconda3/bin/python', 'SHELL': '/bin/bash', 'LC_NAME': 'zh_CN.UTF-8', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'CONDA_DEFAULT_ENV': 'base', 'LC_MEASUREMENT': 'zh_CN.UTF-8', 'GPG_AGENT_INFO': '/run/user/1000/gnupg/S.gpg-agent:0:1', 'LC_IDENTIFICATION': 'zh_CN.UTF-8', 'QT_IM_MODULE': 'fcitx', 'PWD': '/home/yy/sight/pb2025/src/small_gicp/build/small_gicp', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'CONDA_EXE': '/home/yy/anaconda3/bin/conda', 'CLUTTER_IM_MODULE': 'fcitx', 'DBUS_STARTER_ADDRESS': 'unix:path=/run/user/1000/bus,guid=ee9da54a385df526a42c4cdc68257dee', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'LC_NUMERIC': 'zh_CN.UTF-8', 'CONDA_PREFIX': '/home/yy/anaconda3', 'GSETTINGS_SCHEMA_DIR_CONDA_BACKUP': '', 'LC_PAPER': 'zh_CN.UTF-8', 'COLCON': '1', 'VTE_VERSION': '6800', 'CMAKE_PREFIX_PATH': '/opt/ros/humble'}), 'shell': False}
+[0.688748] (small_gicp) StdoutLine: {'line': b'[ 66%] \x1b[32mBuilding CXX object CMakeFiles/small_gicp.dir/src/small_gicp/registration/registration.cpp.o\x1b[0m\n'}
+[0.688964] (small_gicp) StdoutLine: {'line': b'[ 66%] \x1b[32mBuilding CXX object CMakeFiles/small_gicp.dir/src/small_gicp/registration/registration_helper.cpp.o\x1b[0m\n'}
+[0.701528] (-) TimerEvent: {}
+[0.801782] (-) TimerEvent: {}
+[0.902035] (-) TimerEvent: {}
+[1.002359] (-) TimerEvent: {}
+[1.102752] (-) TimerEvent: {}
+[1.203022] (-) TimerEvent: {}
+[1.303278] (-) TimerEvent: {}
+[1.403545] (-) TimerEvent: {}
+[1.503821] (-) TimerEvent: {}
+[1.604094] (-) TimerEvent: {}
+[1.704387] (-) TimerEvent: {}
+[1.804689] (-) TimerEvent: {}
+[1.904957] (-) TimerEvent: {}
+[2.005217] (-) TimerEvent: {}
+[2.105508] (-) TimerEvent: {}
+[2.205796] (-) TimerEvent: {}
+[2.307663] (-) TimerEvent: {}
+[2.407908] (-) TimerEvent: {}
+[2.508141] (-) TimerEvent: {}
+[2.608353] (-) TimerEvent: {}
+[2.708814] (-) TimerEvent: {}
+[2.811298] (-) TimerEvent: {}
+[2.911507] (-) TimerEvent: {}
+[3.012037] (-) TimerEvent: {}
+[3.112478] (-) TimerEvent: {}
+[3.212747] (-) TimerEvent: {}
+[3.313012] (-) TimerEvent: {}
+[3.413270] (-) TimerEvent: {}
+[3.513571] (-) TimerEvent: {}
+[3.613939] (-) TimerEvent: {}
+[3.714607] (-) TimerEvent: {}
+[3.814850] (-) TimerEvent: {}
+[3.915124] (-) TimerEvent: {}
+[4.015356] (-) TimerEvent: {}
+[4.115663] (-) TimerEvent: {}
+[4.215899] (-) TimerEvent: {}
+[4.316108] (-) TimerEvent: {}
+[4.416320] (-) TimerEvent: {}
+[4.516540] (-) TimerEvent: {}
+[4.616775] (-) TimerEvent: {}
+[4.717024] (-) TimerEvent: {}
+[4.817330] (-) TimerEvent: {}
+[4.917610] (-) TimerEvent: {}
+[5.017834] (-) TimerEvent: {}
+[5.118073] (-) TimerEvent: {}
+[5.218309] (-) TimerEvent: {}
+[5.318519] (-) TimerEvent: {}
+[5.418813] (-) TimerEvent: {}
+[5.519134] (-) TimerEvent: {}
+[5.619398] (-) TimerEvent: {}
+[5.719644] (-) TimerEvent: {}
+[5.819875] (-) TimerEvent: {}
+[5.920259] (-) TimerEvent: {}
+[6.020690] (-) TimerEvent: {}
+[6.120950] (-) TimerEvent: {}
+[6.221281] (-) TimerEvent: {}
+[6.321494] (-) TimerEvent: {}
+[6.421669] (-) TimerEvent: {}
+[6.521908] (-) TimerEvent: {}
+[6.622384] (-) TimerEvent: {}
+[6.722678] (-) TimerEvent: {}
+[6.822967] (-) TimerEvent: {}
+[6.923210] (-) TimerEvent: {}
+[7.024950] (-) TimerEvent: {}
+[7.125221] (-) TimerEvent: {}
+[7.225518] (-) TimerEvent: {}
+[7.325736] (-) TimerEvent: {}
+[7.425947] (-) TimerEvent: {}
+[7.526148] (-) TimerEvent: {}
+[7.626353] (-) TimerEvent: {}
+[7.726661] (-) TimerEvent: {}
+[7.827136] (-) TimerEvent: {}
+[7.927437] (-) TimerEvent: {}
+[8.027787] (-) TimerEvent: {}
+[8.128079] (-) TimerEvent: {}
+[8.228348] (-) TimerEvent: {}
+[8.328625] (-) TimerEvent: {}
+[8.429056] (-) TimerEvent: {}
+[8.529325] (-) TimerEvent: {}
+[8.629633] (-) TimerEvent: {}
+[8.729944] (-) TimerEvent: {}
+[8.830305] (-) TimerEvent: {}
+[8.930639] (-) TimerEvent: {}
+[9.031007] (-) TimerEvent: {}
+[9.131246] (-) TimerEvent: {}
+[9.231465] (-) TimerEvent: {}
+[9.331670] (-) TimerEvent: {}
+[9.431891] (-) TimerEvent: {}
+[9.498932] (small_gicp) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX shared library libsmall_gicp.so\x1b[0m\n'}
+[9.532000] (-) TimerEvent: {}
+[9.555774] (small_gicp) StdoutLine: {'line': b'[100%] Built target small_gicp\n'}
+[9.632091] (-) TimerEvent: {}
+[9.673047] (small_gicp) CommandEnded: {'returncode': 0}
+[9.673526] (small_gicp) JobProgress: {'identifier': 'small_gicp', 'progress': 'install'}
+[9.679721] (small_gicp) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/yy/sight/pb2025/src/small_gicp/build/small_gicp'], 'cwd': '/home/yy/sight/pb2025/src/small_gicp/build/small_gicp', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'CONDA_PROMPT_MODIFIER': '(base)', 'LANGUAGE': 'zh_CN:en_US:en', 'USER': 'yy', 'LC_TIME': 'zh_CN.UTF-8', 'XDG_SESSION_TYPE': 'x11', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/opt/openvdb_vendor/lib:/opt/ros/humble/lib', 'HOME': '/home/yy', 'CONDA_SHLVL': '1', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'LC_MONETARY': 'zh_CN.UTF-8', 'DBUS_STARTER_BUS_TYPE': 'session', 'SYSTEMD_EXEC_PID': '1843', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus,guid=ee9da54a385df526a42c4cdc68257dee', 'COLORTERM': 'truecolor', '_CE_M': '', 'MANDATORY_PATH': '/usr/share/gconf/ubuntu.mandatory.path', 'IM_CONFIG_PHASE': '1', 'ROS_DISTRO': 'humble', 'GTK_IM_MODULE': 'fcitx', 'LOGNAME': 'yy', '_': '/home/yy/anaconda3/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'DEFAULTS_PATH': '/usr/share/gconf/ubuntu.default.path', 'USERNAME': 'yy', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', '_CE_CONDA': '', 'ROS_LOCALHOST_ONLY': '0', 'WINDOWPATH': '2', 'PATH': '/home/yy/anaconda3/bin:/home/yy/anaconda3/condabin:/opt/ros/humble/bin:/root/anaconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/yy:@/tmp/.ICE-unix/1843,unix/yy:/tmp/.ICE-unix/1843', 'PAPERSIZE': 'a4', 'XDG_MENU_PREFIX': 'gnome-', 'LC_ADDRESS': 'zh_CN.UTF-8', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/56aa308f_787a_4608_84c9_50ba7a0b7627', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':0', 'LANG': 'zh_CN.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'LC_TELEPHONE': 'zh_CN.UTF-8', 'XMODIFIERS': '@im=fcitx', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/gdm/Xauthority', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'GNOME_TERMINAL_SERVICE': ':1.331', 'SSH_AGENT_LAUNCHER': 'gnome-keyring', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'GSETTINGS_SCHEMA_DIR': '/home/yy/anaconda3/share/glib-2.0/schemas', 'AMENT_PREFIX_PATH': '/opt/ros/humble', 'CONDA_PYTHON_EXE': '/home/yy/anaconda3/bin/python', 'SHELL': '/bin/bash', 'LC_NAME': 'zh_CN.UTF-8', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'CONDA_DEFAULT_ENV': 'base', 'LC_MEASUREMENT': 'zh_CN.UTF-8', 'GPG_AGENT_INFO': '/run/user/1000/gnupg/S.gpg-agent:0:1', 'LC_IDENTIFICATION': 'zh_CN.UTF-8', 'QT_IM_MODULE': 'fcitx', 'PWD': '/home/yy/sight/pb2025/src/small_gicp/build/small_gicp', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'CONDA_EXE': '/home/yy/anaconda3/bin/conda', 'CLUTTER_IM_MODULE': 'fcitx', 'DBUS_STARTER_ADDRESS': 'unix:path=/run/user/1000/bus,guid=ee9da54a385df526a42c4cdc68257dee', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'LC_NUMERIC': 'zh_CN.UTF-8', 'CONDA_PREFIX': '/home/yy/anaconda3', 'GSETTINGS_SCHEMA_DIR_CONDA_BACKUP': '', 'LC_PAPER': 'zh_CN.UTF-8', 'COLCON': '1', 'VTE_VERSION': '6800', 'CMAKE_PREFIX_PATH': '/opt/ros/humble'}), 'shell': False}
+[9.686195] (small_gicp) StdoutLine: {'line': b'-- Install configuration: "release"\n'}
+[9.686326] (small_gicp) StdoutLine: {'line': b'-- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include\n'}
+[9.686445] (small_gicp) StdoutLine: {'line': b'-- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp\n'}
+[9.686602] (small_gicp) StdoutLine: {'line': b'-- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/registration\n'}
+[9.686656] (small_gicp) StdoutLine: {'line': b'-- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/registration/registration_result.hpp\n'}
+[9.686732] (small_gicp) StdoutLine: {'line': b'-- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/registration/reduction_omp.hpp\n'}
+[9.686794] (small_gicp) StdoutLine: {'line': b'-- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/registration/reduction.hpp\n'}
+[9.686839] (small_gicp) StdoutLine: {'line': b'-- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/registration/registration.hpp\n'}
+[9.686889] (small_gicp) StdoutLine: {'line': b'-- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/registration/registration_helper.hpp\n'}
+[9.686947] (small_gicp) StdoutLine: {'line': b'-- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/registration/termination_criteria.hpp\n'}
+[9.686995] (small_gicp) StdoutLine: {'line': b'-- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/registration/optimizer.hpp\n'}
+[9.687051] (small_gicp) StdoutLine: {'line': b'-- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/registration/rejector.hpp\n'}
+[9.687103] (small_gicp) StdoutLine: {'line': b'-- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/registration/reduction_tbb.hpp\n'}
+[9.687158] (small_gicp) StdoutLine: {'line': b'-- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/points\n'}
+[9.687407] (small_gicp) StdoutLine: {'line': b'-- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/points/traits.hpp\n'}
+[9.687458] (small_gicp) StdoutLine: {'line': b'-- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/points/point_cloud.hpp\n'}
+[9.687517] (small_gicp) StdoutLine: {'line': b'-- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/points/eigen.hpp\n'}
+[9.687583] (small_gicp) StdoutLine: {'line': b'-- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/factors\n'}
+[9.689365] (small_gicp) StdoutLine: {'line': b'-- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/factors/icp_factor.hpp\n'}
+[9.689779] (small_gicp) StdoutLine: {'line': b'-- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/factors/plane_icp_factor.hpp\n'}
+[9.689856] (small_gicp) StdoutLine: {'line': b'-- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/factors/general_factor.hpp\n'}
+[9.690104] (small_gicp) StdoutLine: {'line': b'-- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/factors/robust_kernel.hpp\n'}
+[9.690191] (small_gicp) StdoutLine: {'line': b'-- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/factors/gicp_factor.hpp\n'}
+[9.690234] (small_gicp) StdoutLine: {'line': b'-- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/benchmark\n'}
+[9.690358] (small_gicp) StdoutLine: {'line': b'-- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/benchmark/benchmark_odom.hpp\n'}
+[9.690433] (small_gicp) StdoutLine: {'line': b'-- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/benchmark/read_points.hpp\n'}
+[9.690499] (small_gicp) StdoutLine: {'line': b'-- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/benchmark/benchmark.hpp\n'}
+[9.690562] (small_gicp) StdoutLine: {'line': b'-- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/pcl\n'}
+[9.690671] (small_gicp) StdoutLine: {'line': b'-- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/pcl/pcl_point_traits.hpp\n'}
+[9.690737] (small_gicp) StdoutLine: {'line': b'-- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/pcl/pcl_point.hpp\n'}
+[9.690799] (small_gicp) StdoutLine: {'line': b'-- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/pcl/pcl_registration_impl.hpp\n'}
+[9.690860] (small_gicp) StdoutLine: {'line': b'-- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/pcl/pcl_proxy.hpp\n'}
+[9.690921] (small_gicp) StdoutLine: {'line': b'-- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/pcl/pcl_registration.hpp\n'}
+[9.690982] (small_gicp) StdoutLine: {'line': b'-- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/ann\n'}
+[9.691048] (small_gicp) StdoutLine: {'line': b'-- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/ann/kdtree_tbb.hpp\n'}
+[9.691147] (small_gicp) StdoutLine: {'line': b'-- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/ann/knn_result.hpp\n'}
+[9.691254] (small_gicp) StdoutLine: {'line': b'-- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/ann/traits.hpp\n'}
+[9.691372] (small_gicp) StdoutLine: {'line': b'-- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/ann/kdtree_omp.hpp\n'}
+[9.691445] (small_gicp) StdoutLine: {'line': b'-- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/ann/sequential_voxelmap_accessor.hpp\n'}
+[9.691516] (small_gicp) StdoutLine: {'line': b'-- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/ann/projection.hpp\n'}
+[9.691621] (small_gicp) StdoutLine: {'line': b'-- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/ann/kdtree.hpp\n'}
+[9.691777] (small_gicp) StdoutLine: {'line': b'-- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/ann/gaussian_voxelmap.hpp\n'}
+[9.691883] (small_gicp) StdoutLine: {'line': b'-- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/ann/flat_container.hpp\n'}
+[9.691933] (small_gicp) StdoutLine: {'line': b'-- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/ann/incremental_voxelmap.hpp\n'}
+[9.691962] (small_gicp) StdoutLine: {'line': b'-- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/ann/projective_search.hpp\n'}
+[9.692001] (small_gicp) StdoutLine: {'line': b'-- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/util\n'}
+[9.692237] (small_gicp) StdoutLine: {'line': b'-- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/util/downsampling.hpp\n'}
+[9.692351] (small_gicp) StdoutLine: {'line': b'-- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/util/lie.hpp\n'}
+[9.692448] (small_gicp) StdoutLine: {'line': b'-- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/util/sort_tbb.hpp\n'}
+[9.692551] (small_gicp) StdoutLine: {'line': b'-- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/util/normal_estimation.hpp\n'}
+[9.692662] (small_gicp) StdoutLine: {'line': b'-- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/util/normal_estimation_omp.hpp\n'}
+[9.692771] (small_gicp) StdoutLine: {'line': b'-- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/util/fast_floor.hpp\n'}
+[9.692867] (small_gicp) StdoutLine: {'line': b'-- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/util/downsampling_omp.hpp\n'}
+[9.692969] (small_gicp) StdoutLine: {'line': b'-- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/util/vector3i_hash.hpp\n'}
+[9.693069] (small_gicp) StdoutLine: {'line': b'-- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/util/downsampling_tbb.hpp\n'}
+[9.693173] (small_gicp) StdoutLine: {'line': b'-- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/util/normal_estimation_tbb.hpp\n'}
+[9.693279] (small_gicp) StdoutLine: {'line': b'-- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/include/small_gicp/util/sort_omp.hpp\n'}
+[9.693497] (small_gicp) StdoutLine: {'line': b'-- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/lib/libsmall_gicp.so\n'}
+[9.693893] (small_gicp) StdoutLine: {'line': b'-- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/lib/cmake/small_gicp/small_gicp-targets.cmake\n'}
+[9.694026] (small_gicp) StdoutLine: {'line': b'-- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/lib/cmake/small_gicp/small_gicp-targets-release.cmake\n'}
+[9.694154] (small_gicp) StdoutLine: {'line': b'-- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/lib/cmake/small_gicp/small_gicp-config.cmake\n'}
+[9.694259] (small_gicp) StdoutLine: {'line': b'-- Installing: /home/yy/sight/pb2025/src/small_gicp/install/small_gicp/lib/cmake/small_gicp/small_gicp-config-version.cmake\n'}
+[9.696482] (small_gicp) CommandEnded: {'returncode': 0}
+[9.710243] (small_gicp) JobEnded: {'identifier': 'small_gicp', 'rc': 0}
+[9.710552] (-) EventReactorShutdown: {}
