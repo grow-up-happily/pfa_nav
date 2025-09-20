@@ -21,6 +21,7 @@ vcs import src < src/rmu_gazebo_simulator/dependencies.repos \
 rosdep install -r --from-paths src --ignore-src --rosdistro $ROS_DISTRO -y \
 
 ros2 launch rmu_gazebo_simulator bringup_sim.launch.py 
+#### 仿真
 
 导航模式：
 
@@ -37,6 +38,17 @@ ros2 launch rmu_gazebo_simulator bringup_sim.launch.py
 
     ros2 run nav2_map_server map_saver_cli -f <YOUR_MAP_NAME> --ros-args -r __ns:=/red_standard_robot1
 
+####  实车
+
+建图模式：
+
+```bash
+ros2 launch pb2025_nav_bringup rm_navigation_reality_launch.py \
+slam:=True \
+use_robot_state_pub:=True
+```
+
+保存栅格地图：`ros2 run nav2_map_server map_saver_cli -f game  --ros-args -r __ns:=/red_standard_robot1`
 
 
 导航模块将发布静态的机器人关节位姿数据以维护 TF 树。

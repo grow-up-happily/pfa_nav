@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# 保存地图
+
 # 工作空间目录
 WORKSPACE_DIR=~/sight/pfa-nav
 

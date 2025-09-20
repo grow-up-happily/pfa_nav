@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# 建图模式
 
 # 进入工作空间目录
 cd ~/sight/pfa-nav || { echo "❌ 未找到目录"; exit 1; }
@@ -9,7 +10,7 @@ WORKSPACE_DIR=$(pwd)
 echo " 开始编译工作空间: $WORKSPACE_DIR"
 
 # 编译，最多使用2个并行线程
-colcon build --parallel-workers 2
+colcon build --symlink-install --parallel-workers 2 --cmake-args -DCMAKE_BUILD_TYPE=Release
 
 # 检查编译是否成功
 if [ $? -eq 0 ]; then

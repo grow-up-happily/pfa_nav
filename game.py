@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+# 实车跑图目标点发布，任务接收
 import rclpy
 from rclpy.node import Node
 from geometry_msgs.msg import Twist

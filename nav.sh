@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# 导航模式
+
 # 进入你的工作空间目录
 cd ~/sight/pfa-nav || exit
 
@@ -7,11 +9,11 @@ cd ~/sight/pfa-nav || exit
 source install/setup.bash
 
 # 拷贝 pcd 文件
-cp src/point_lio/PCD/scans.pcd src/pb2025_nav_bringup/pcd/reality/game.pcd
+cp src/pb2025_sentry_nav/point_lio/PCD/scans.pcd src/pb2025_sentry_nav/pb2025_nav_bringup/pcd/reality/game.pcd
 echo "✅ 已拷贝 scans.pcd 为 game.pcd"
 
 # 编译
-colcon build --parallel-workers 2
+colcon build --symlink-install --parallel-workers 2 --cmake-args -DCMAKE_BUILD_TYPE=Release
 if [ $? -ne 0 ]; then
   echo "❌ 编译失败！退出"
   exit 1
