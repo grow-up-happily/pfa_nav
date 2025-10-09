@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 # 仿真跑图
+import struct
 import rclpy
 from rclpy.node import Node
 from geometry_msgs.msg import Twist
@@ -25,9 +26,9 @@ class GameNode(Node):
             self.ser = None
         # 速度指令订阅
         self.cmd_vel_sub = self.create_subscription(
-            Twist, '/cmd_vel', self.cmd_vel_callback, 10)
+            Twist, '/red_standard_robot1/cmd_vel', self.cmd_vel_callback, 10)
         self.smooth_cmd_vel_sub = self.create_subscription(
-            Twist, '/smooth_cmd_vel', self.cmd_vel_callback, 10)
+            Twist, '/red_standard_robot1/smooth_cmd_vel', self.cmd_vel_callback, 10)
         # 导航相关
         self.home_idx = home_idx
         self.order = order
@@ -66,21 +67,37 @@ class GameNode(Node):
             wps.append(data[f'Waypoint_{i}'])
         return wps
 
+    # def cmd_vel_callback(self, msg):
+    #     """处理速度指令并发送到串口"""
+    #     if self.ser is None:
+    #         return
+    #     x_vel = int(msg.linear.x * 1000) # 1000倍放大
+    #     y_vel = int(msg.linear.y * 1000) # 1000倍放大
+    #     x_sign = '+' if x_vel >= 0 else '-'
+    #     y_sign = '+' if y_vel >= 0 else '-'
+    #     x_vel = abs(x_vel)
+    #     y_vel = abs(y_vel)
+    #     data_packet = f"S{x_sign}{x_vel:03d}{y_sign}{y_vel:03d}{self.status_flag}E"
+    #     self.get_logger().info(f"收到速度指令 - vx: {msg.linear.x:.3f}, vy: {msg.linear.y:.3f}")
+    #     self.get_logger().info(f"发送数据包: {data_packet}")
+    #     try:
+    #         self.ser.write(data_packet.encode())
+    #     except Exception as e:
+    #         self.get_logger().error(f"串口发送失败: {e}")
+
     def cmd_vel_callback(self, msg):
         """处理速度指令并发送到串口"""
         if self.ser is None:
             return
-        x_vel = int(msg.linear.x * 1000) # 1000倍放大
-        y_vel = int(msg.linear.y * 1000) # 1000倍放大
-        x_sign = '+' if x_vel >= 0 else '-'
-        y_sign = '+' if y_vel >= 0 else '-'
-        x_vel = abs(x_vel)
-        y_vel = abs(y_vel)
-        data_packet = f"S{x_sign}{x_vel:03d}{y_sign}{y_vel:03d}{self.status_flag}E"
+        vx = msg.linear.x  
+        vy = msg.linear.y
+        data_packet = struct.pack('<ffB', vx, vy, self.status_flag)
+        framed_packet = b'S' + data_packet + b'E'
         self.get_logger().info(f"收到速度指令 - vx: {msg.linear.x:.3f}, vy: {msg.linear.y:.3f}")
-        self.get_logger().info(f"发送数据包: {data_packet}")
+        self.get_logger().info(f"发送数据包: {framed_packet.hex()}")
         try:
-            self.ser.write(data_packet.encode())
+            self.ser.write(framed_packet)
+            self.get_logger().info(f"串口已发送: {framed_packet}")
         except Exception as e:
             self.get_logger().error(f"串口发送失败: {e}")
 

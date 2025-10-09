@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 # 实车跑图目标点发布，任务接收
+import struct
 import rclpy
 from rclpy.node import Node
 from geometry_msgs.msg import Twist
@@ -54,7 +55,7 @@ class GameNode(Node):
         self.receiver_thread.daemon = True
         self.receiver_thread.start()
         self.get_logger().info("速度发送和导航节点已启动")
-        self.get_logger().info("已订阅 /cmd_vel 和 /smooth_cmd_vel 话题")
+        self.get_logger().info("已订阅 /cmd_vel 话题")
         # 导航循环定时器
         self.timer = self.create_timer(1.0, self.loop_nav)
 
@@ -66,21 +67,38 @@ class GameNode(Node):
             wps.append(data[f'Waypoint_{i}'])
         return wps
 
+    # def cmd_vel_callback(self, msg):
+    #     """处理速度指令并发送到串口"""
+    #     if self.ser is None:
+    #         return
+    #     x_vel = int(msg.linear.x * 1000) # 1000倍放大
+    #     y_vel = int(msg.linear.y * 1000) # 1000倍放大
+    #     x_sign = '+' if x_vel >= 0 else '-'
+    #     y_sign = '+' if y_vel >= 0 else '-'
+    #     x_vel = abs(x_vel)
+    #     y_vel = abs(y_vel)
+    #     data_packet = f"S{x_sign}{x_vel:04d}{y_sign}{y_vel:04d}{self.status_flag}E"
+    #     self.get_logger().info(f"收到速度指令 - vx: {msg.linear.x:.3f}, vy: {msg.linear.y:.3f}")
+    #     self.get_logger().info(f"发送数据包: {data_packet}")
+    #     try:
+    #         self.ser.write(data_packet.encode())
+    #         self.get_logger().info(f"串口已发送: {data_packet}")
+    #     except Exception as e:
+    #         self.get_logger().error(f"串口发送失败: {e}")
+
     def cmd_vel_callback(self, msg):
         """处理速度指令并发送到串口"""
         if self.ser is None:
             return
-        x_vel = int(msg.linear.x * 1000) # 1000倍放大
-        y_vel = int(msg.linear.y * 1000) # 1000倍放大
-        x_sign = '+' if x_vel >= 0 else '-'
-        y_sign = '+' if y_vel >= 0 else '-'
-        x_vel = abs(x_vel)
-        y_vel = abs(y_vel)
-        data_packet = f"S{x_sign}{x_vel:03d}{y_sign}{y_vel:03d}{self.status_flag}E"
+        vx = msg.linear.x  
+        vy = msg.linear.y
+        data_packet = struct.pack('<ffB', vx, vy, self.status_flag)
+        framed_packet = b'S' + data_packet + b'E'
         self.get_logger().info(f"收到速度指令 - vx: {msg.linear.x:.3f}, vy: {msg.linear.y:.3f}")
-        self.get_logger().info(f"发送数据包: {data_packet}")
+        self.get_logger().info(f"发送数据包: {framed_packet.hex()}")
         try:
-            self.ser.write(data_packet.encode())
+            self.ser.write(framed_packet)
+            self.get_logger().info(f"串口已发送: {framed_packet}")
         except Exception as e:
             self.get_logger().error(f"串口发送失败: {e}")
 
@@ -95,33 +113,39 @@ class GameNode(Node):
                     self.get_logger().info(f"收到串口数据: {data}")
                     with open('data.txt', 'w') as f:
                         f.write(data)
-                    for c in data:
-                        if self.force_loop:
-                            # 强制循环模式：忽略所有串口指令，只执行循环导航
-                            self.get_logger().info(f"强制循环模式：忽略指令{c}，继续执行循环导航")
-                        else:
-                            # 正常模式：根据指令执行不同操作
-                            if c == '1':
-                                self.get_logger().info("串口收到1, 发送home点")
-                                rclpy.get_default_context().call_soon_threadsafe(self.send_goal, self.home_idx)
-                                self.looping = False
-                                self.one_shot_mode = False
-                            elif c == '2':
-                                self.get_logger().info("串口收到2, 恢复循环")
-                                self.looping = True
-                                self.one_shot_mode = False
-                                rclpy.get_default_context().call_soon_threadsafe(self.loop_nav)
-                            elif c == '3':
-                                self.get_logger().info("串口收到3, 发送guard点")
-                                rclpy.get_default_context().call_soon_threadsafe(self.send_goal, self.guard_idx)
-                                self.looping = False
-                                self.one_shot_mode = False
-                            elif c == '4':
-                                self.get_logger().info("串口收到4, 执行一遍多点导航")
-                                self.one_shot_mode = True
-                                self.one_shot_idx = 0
-                                self.looping = False
-                                rclpy.get_default_context().call_soon_threadsafe(self.send_goal, self.order[0])
+                    if not data:
+                        self.get_logger().info("未收到串口数据，自动恢复循环")
+                        self.looping = True
+                        self.one_shot_mode = False
+                        rclpy.get_default_context().call_soon_threadsafe(self.loop_nav)
+                    else:
+                        for c in data:
+                            if self.force_loop:
+                                # 强制循环模式：忽略所有串口指令，只执行循环导航
+                                self.get_logger().info(f"强制循环模式：忽略指令{c}，继续执行循环导航")
+                            else:
+                                # 正常模式：根据指令执行不同操作
+                                if c == '1':
+                                    self.get_logger().info("串口收到1, 发送home点")
+                                    rclpy.get_default_context().call_soon_threadsafe(self.send_goal, self.home_idx)
+                                    self.looping = False
+                                    self.one_shot_mode = False
+                                elif c == '2':
+                                    self.get_logger().info("串口收到2, 恢复循环")
+                                    self.looping = True
+                                    self.one_shot_mode = False
+                                    rclpy.get_default_context().call_soon_threadsafe(self.loop_nav)
+                                elif c == '3':
+                                    self.get_logger().info("串口收到3, 发送guard点")
+                                    rclpy.get_default_context().call_soon_threadsafe(self.send_goal, self.guard_idx)
+                                    self.looping = False
+                                    self.one_shot_mode = False
+                                elif c == '4':
+                                    self.get_logger().info("串口收到4, 执行一遍多点导航")
+                                    self.one_shot_mode = True
+                                    self.one_shot_idx = 0
+                                    self.looping = False
+                                    rclpy.get_default_context().call_soon_threadsafe(self.send_goal, self.order[0])
             except serial.SerialException as e:
                 self.get_logger().error(f"串口通信错误: {str(e)}")
                 break
