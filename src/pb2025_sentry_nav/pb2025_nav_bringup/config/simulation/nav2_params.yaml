@@ -76,7 +76,7 @@ point_lio:
       path_en: False                                    # False: close the path output
       scan_publish_en: True                             # False: close all the point cloud output
       scan_bodyframe_pub_en: False                      # True: output the point cloud scans in IMU-body-frame
-      tf_send_en: False                                 # True: send transform from 'camera_init' to 'aft_mapped'
+      tf_send_en: False                                  # True: send transform from 'camera_init' to 'aft_mapped'
 
     pcd_save:
       pcd_save_en: False
@@ -157,7 +157,7 @@ fake_vel_transform:
     input_cmd_vel_topic: "cmd_vel_nav2_result"
     output_cmd_vel_topic: "cmd_vel"
     cmd_spin_topic: "cmd_spin"
-    init_spin_speed: 3.14
+    init_spin_speed: 0.0
 
 small_gicp_relocalization:
   ros__parameters:
@@ -231,7 +231,7 @@ slam_toolbox:
     enable_interactive_mode: true
 
     # General Parameters
-    use_scan_matching: false
+    use_scan_matching: true
     use_scan_barycenter: true
     minimum_travel_distance: 0.1
     minimum_travel_heading: 0.1
@@ -240,7 +240,7 @@ slam_toolbox:
     link_match_minimum_response_fine: 0.1
     link_scan_maximum_distance: 1.5
     loop_search_maximum_distance: 3.0
-    do_loop_closing: false
+    do_loop_closing: true
     loop_match_minimum_chain_size: 10
     loop_match_maximum_variance_coarse: 3.0
     loop_match_minimum_response_coarse: 0.35
@@ -353,7 +353,7 @@ controller_server:
       translation_kp: 3.0
       translation_ki: 0.1
       translation_kd: 0.3
-      enable_rotation: false
+      enable_rotation: true
       rotation_kp: 3.0
       rotation_ki: 0.1
       rotation_kd: 0.3

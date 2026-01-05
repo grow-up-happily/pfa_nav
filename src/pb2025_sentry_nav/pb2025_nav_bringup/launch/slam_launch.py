@@ -179,6 +179,42 @@ def generate_launch_description():
         ],
     )
 
+    # Add loam_interface node to publish odom->base_footprint TF
+    start_loam_interface_node = Node(
+        package="loam_interface",
+        executable="loam_interface_node",
+        name="loam_interface",
+        output="screen",
+        respawn=use_respawn,
+        respawn_delay=2.0,
+        parameters=[configured_params],
+        arguments=["--ros-args", "--log-level", log_level],
+    )
+
+    # Add sensor_scan_generation node for sensor data processing
+    start_sensor_scan_generation_node = Node(
+        package="sensor_scan_generation",
+        executable="sensor_scan_generation_node",
+        name="sensor_scan_generation",
+        output="screen",
+        respawn=use_respawn,
+        respawn_delay=2.0,
+        parameters=[configured_params],
+        arguments=["--ros-args", "--log-level", log_level],
+    )
+
+    # Add fake_vel_transform node for velocity transformation
+    start_fake_vel_transform_node = Node(
+        package="fake_vel_transform",
+        executable="fake_vel_transform_node",
+        name="fake_vel_transform",
+        output="screen",
+        respawn=use_respawn,
+        respawn_delay=2.0,
+        parameters=[configured_params],
+        arguments=["--ros-args", "--log-level", log_level],
+    )
+
     ld = LaunchDescription()
 
     # Declare the launch options
@@ -197,5 +233,10 @@ def generate_launch_description():
     ld.add_action(start_sync_slam_toolbox_node)
     ld.add_action(start_point_lio_node)
     ld.add_action(start_static_transform_node)
+
+    # Add localization-related nodes needed in SLAM mode
+    ld.add_action(start_loam_interface_node)
+    ld.add_action(start_sensor_scan_generation_node)
+    ld.add_action(start_fake_vel_transform_node)
 
     return ld

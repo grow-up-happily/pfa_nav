@@ -42,6 +42,7 @@ def generate_launch_description():
     # Create the launch configuration variables
     namespace = LaunchConfiguration("namespace")
     slam = LaunchConfiguration("slam")
+    enable_nav = LaunchConfiguration("enable_nav")
     map_yaml_file = LaunchConfiguration("map")
     prior_pcd_file = LaunchConfiguration("prior_pcd_file")
     use_sim_time = LaunchConfiguration("use_sim_time")
@@ -132,6 +133,12 @@ def generate_launch_description():
         description="Whether to respawn if a node crashes. Applied when composition is disabled.",
     )
 
+    declare_enable_nav_cmd = DeclareLaunchArgument(
+        "enable_nav",
+        default_value="True",
+        description="Whether to start navigation",
+    )
+
     declare_log_level_cmd = DeclareLaunchArgument(
         "log_level", default_value="info", description="log level"
     )
@@ -185,6 +192,7 @@ def generate_launch_description():
                 PythonLaunchDescriptionSource(
                     os.path.join(launch_dir, "navigation_launch.py")
                 ),
+                condition=IfCondition(enable_nav),
                 launch_arguments={
                     "namespace": namespace,
                     "use_sim_time": use_sim_time,
@@ -215,6 +223,7 @@ def generate_launch_description():
     ld.add_action(declare_autostart_cmd)
     ld.add_action(declare_use_composition_cmd)
     ld.add_action(declare_use_respawn_cmd)
+    ld.add_action(declare_enable_nav_cmd)
     ld.add_action(declare_log_level_cmd)
 
     # Add the actions to launch all of the navigation nodes

@@ -39,6 +39,7 @@ LoamInterfaceNode::LoamInterfaceNode(const rclcpp::NodeOptions & options)
 
   tf_buffer_ = std::make_unique<tf2_ros::Buffer>(this->get_clock());
   tf_listener_ = std::make_unique<tf2_ros::TransformListener>(*tf_buffer_);
+  // tf_broadcaster_ = std::make_unique<tf2_ros::TransformBroadcaster>(this);
 
   pcd_pub_ = this->create_publisher<sensor_msgs::msg::PointCloud2>("registered_scan", 5);
   odom_pub_ = this->create_publisher<nav_msgs::msg::Odometry>("lidar_odometry", 5);
@@ -95,6 +96,23 @@ void LoamInterfaceNode::odometryCallback(const nav_msgs::msg::Odometry::ConstSha
   out.pose.pose.orientation = tf2::toMsg(tf_odom_to_lidar.getRotation());
 
   odom_pub_->publish(out);
+
+  // // Publish TF: odom -> base_footprint
+  // geometry_msgs::msg::TransformStamped tf_msg;
+  // tf_msg.header.stamp = msg->header.stamp;
+  // tf_msg.header.frame_id = odom_frame_;
+  // tf_msg.child_frame_id = base_frame_;
+
+  // // Transform from odom to base_frame (lidar to base already stored in tf_odom_to_lidar_odom_)
+  // tf2::Transform tf_odom_to_base = tf_odom_to_lidar * tf_odom_to_lidar_odom_.inverse();
+
+  // const auto & base_origin = tf_odom_to_base.getOrigin();
+  // tf_msg.transform.translation.x = base_origin.x();
+  // tf_msg.transform.translation.y = base_origin.y();
+  // tf_msg.transform.translation.z = base_origin.z();
+  // tf_msg.transform.rotation = tf2::toMsg(tf_odom_to_base.getRotation());
+
+  // tf_broadcaster_->sendTransform(tf_msg);
 }
 
 }  // namespace loam_interface
