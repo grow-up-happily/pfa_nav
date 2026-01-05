@@ -1,1 +1,0 @@
-ament_cmake_symlink_install_targets("TARGET_FILES" "/home/yy/sight/pfa-nav/build/rmoss_gz_bridge/pose_bridge" "/home/yy/sight/pfa-nav/build/rmoss_gz_bridge/rfid_bridge" "TARGETS" "pose_bridge" "rfid_bridge" "DESTINATION" "lib/rmoss_gz_bridge")

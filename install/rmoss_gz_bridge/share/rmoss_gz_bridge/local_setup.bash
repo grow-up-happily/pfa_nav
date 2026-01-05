@@ -1,1 +1,0 @@
-/home/yy/sight/pfa-nav/build/rmoss_gz_bridge/ament_cmake_environment_hooks/local_setup.bash

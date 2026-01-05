@@ -1,1 +1,0 @@
-rclcpp;rclcpp_components;rclcpp_action;tf2;tf2_ros;tf2_geometry_msgs;geometry_msgs;sensor_msgs;nav2_msgs;example_interfaces;joy;ament_lint_auto;ament_lint_common;ament_cmake_clang_format;ament_cmake_black

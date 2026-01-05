@@ -1,1 +1,0 @@
-ament_cmake_symlink_install_targets("TARGET_FILES" "/home/yy/sight/pfa-nav/build/sensor_scan_generation/libsensor_scan_generation.so" "TARGETS" "sensor_scan_generation" "ARCHIVE_DESTINATION" "lib" "LIBRARY_DESTINATION" "lib" "RUNTIME_DESTINATION" "bin")

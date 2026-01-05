@@ -1,1 +1,0 @@
-/home/yy/sight/pfa-nav/build/rmu_gazebo_simulator/ament_cmake_core/rmu_gazebo_simulatorConfig-version.cmake

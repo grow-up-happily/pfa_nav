@@ -1,1 +1,0 @@
-/home/yy/sight/pfa-nav/build/wp_map_tools/rosidl_generator_py/wp_map_tools/srv/_get_waypoint_by_name.py

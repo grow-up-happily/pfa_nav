@@ -1,9 +1,0 @@
-/home/yy/sight/pfa-nav/build/rmu_gazebo_simulator/CMakeFiles/uninstall.dir
-/home/yy/sight/pfa-nav/build/rmu_gazebo_simulator/CMakeFiles/rmu_gazebo_simulator_uninstall.dir
-/home/yy/sight/pfa-nav/build/rmu_gazebo_simulator/CMakeFiles/test.dir
-/home/yy/sight/pfa-nav/build/rmu_gazebo_simulator/CMakeFiles/edit_cache.dir
-/home/yy/sight/pfa-nav/build/rmu_gazebo_simulator/CMakeFiles/rebuild_cache.dir
-/home/yy/sight/pfa-nav/build/rmu_gazebo_simulator/CMakeFiles/list_install_components.dir
-/home/yy/sight/pfa-nav/build/rmu_gazebo_simulator/CMakeFiles/install.dir
-/home/yy/sight/pfa-nav/build/rmu_gazebo_simulator/CMakeFiles/install/local.dir
-/home/yy/sight/pfa-nav/build/rmu_gazebo_simulator/CMakeFiles/install/strip.dir

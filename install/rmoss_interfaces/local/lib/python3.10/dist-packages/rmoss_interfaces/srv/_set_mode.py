@@ -1,1 +1,0 @@
-/home/yy/sight/pfa-nav/build/rmoss_interfaces/rosidl_generator_py/rmoss_interfaces/srv/_set_mode.py

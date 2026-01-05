@@ -1,1 +1,0 @@
-/home/yy/sight/pfa-nav/src/rmoss_gazebo/rmoss_gz_base/include/rmoss_gz_base/gz_odometry.hpp

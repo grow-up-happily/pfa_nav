@@ -1,3 +1,0 @@
-
-# response constants
-bool success

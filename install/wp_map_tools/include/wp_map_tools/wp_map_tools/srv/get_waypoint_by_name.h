@@ -1,1 +1,0 @@
-/home/yy/sight/pfa-nav/build/wp_map_tools/rosidl_generator_c/wp_map_tools/srv/get_waypoint_by_name.h

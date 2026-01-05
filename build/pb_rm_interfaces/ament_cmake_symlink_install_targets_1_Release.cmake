@@ -1,1 +1,0 @@
-ament_cmake_symlink_install_targets("TARGET_FILES" "/home/yy/sight/pfa-nav/build/pb_rm_interfaces/rosidl_generator_py/pb_rm_interfaces/pb_rm_interfaces_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so" "TARGETS" "pb_rm_interfaces__rosidl_typesupport_introspection_c__pyext" "DESTINATION" "local/lib/python3.10/dist-packages/pb_rm_interfaces")

@@ -1,8 +1,0 @@
-/home/yy/sight/pfa-nav/build/auto_aim_interfaces/rosidl_adapter/auto_aim_interfaces:msg/Armor.idl
-/home/yy/sight/pfa-nav/build/auto_aim_interfaces/rosidl_adapter/auto_aim_interfaces:msg/Armors.idl
-/home/yy/sight/pfa-nav/build/auto_aim_interfaces/rosidl_adapter/auto_aim_interfaces:msg/Target.idl
-/home/yy/sight/pfa-nav/build/auto_aim_interfaces/rosidl_adapter/auto_aim_interfaces:msg/DebugLight.idl
-/home/yy/sight/pfa-nav/build/auto_aim_interfaces/rosidl_adapter/auto_aim_interfaces:msg/DebugLights.idl
-/home/yy/sight/pfa-nav/build/auto_aim_interfaces/rosidl_adapter/auto_aim_interfaces:msg/DebugArmor.idl
-/home/yy/sight/pfa-nav/build/auto_aim_interfaces/rosidl_adapter/auto_aim_interfaces:msg/DebugArmors.idl
-/home/yy/sight/pfa-nav/build/auto_aim_interfaces/rosidl_adapter/auto_aim_interfaces:msg/TrackerInfo.idl

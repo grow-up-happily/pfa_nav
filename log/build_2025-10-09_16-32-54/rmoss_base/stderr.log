@@ -1,8 +1,0 @@
-In file included from [01m[K/home/yy/sight/pfa-nav/src/rmoss_core/rmoss_base/test/test_fixed_packet_tool.cpp:21[m[K:
-[01m[K/home/yy/sight/pfa-nav/src/rmoss_core/rmoss_base/test/dummy_transporter.hpp:[m[K In constructor ‘[01m[KTransporterFactory::TransporterFactory()[m[K’:
-[01m[K/home/yy/sight/pfa-nav/src/rmoss_core/rmoss_base/test/dummy_transporter.hpp:68:9:[m[K [01;35m[Kwarning: [m[Kignoring return value of ‘[01m[Kint pipe(int*)[m[K’ declared with attribute ‘[01m[Kwarn_unused_result[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-result-Wunused-result]8;;[m[K]
-   68 |     [01;35m[Kpipe(fds1)[m[K;
-      |     [01;35m[K~~~~^~~~~~[m[K
-[01m[K/home/yy/sight/pfa-nav/src/rmoss_core/rmoss_base/test/dummy_transporter.hpp:69:9:[m[K [01;35m[Kwarning: [m[Kignoring return value of ‘[01m[Kint pipe(int*)[m[K’ declared with attribute ‘[01m[Kwarn_unused_result[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-result-Wunused-result]8;;[m[K]
-   69 |     [01;35m[Kpipe(fds2)[m[K;
-      |     [01;35m[K~~~~^~~~~~[m[K

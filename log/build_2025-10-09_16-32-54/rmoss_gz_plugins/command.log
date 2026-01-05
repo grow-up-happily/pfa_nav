@@ -1,6 +1,0 @@
-Invoking command in '/home/yy/sight/pfa-nav/build/rmoss_gz_plugins': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/yy/sight/pfa-nav/src/rmoss_gazebo/rmoss_gz_plugins -DCMAKE_BUILD_TYPE=Release -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/yy/sight/pfa-nav/install/rmoss_gz_plugins
-Invoked command in '/home/yy/sight/pfa-nav/build/rmoss_gz_plugins' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/yy/sight/pfa-nav/src/rmoss_gazebo/rmoss_gz_plugins -DCMAKE_BUILD_TYPE=Release -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/yy/sight/pfa-nav/install/rmoss_gz_plugins
-Invoking command in '/home/yy/sight/pfa-nav/build/rmoss_gz_plugins': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/yy/sight/pfa-nav/build/rmoss_gz_plugins -- -j20 -l20
-Invoked command in '/home/yy/sight/pfa-nav/build/rmoss_gz_plugins' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/yy/sight/pfa-nav/build/rmoss_gz_plugins -- -j20 -l20
-Invoking command in '/home/yy/sight/pfa-nav/build/rmoss_gz_plugins': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/yy/sight/pfa-nav/build/rmoss_gz_plugins
-Invoked command in '/home/yy/sight/pfa-nav/build/rmoss_gz_plugins' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/yy/sight/pfa-nav/build/rmoss_gz_plugins

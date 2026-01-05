@@ -1,8 +1,0 @@
-{
-  "package_name": "wp_map_tools",
-  "non_idl_tuples": [
-    "/home/yy/sight/pfa-nav/src/wp_map_tools:msg/Waypoint.msg",
-    "/home/yy/sight/pfa-nav/src/wp_map_tools:srv/SaveWaypoints.srv",
-    "/home/yy/sight/pfa-nav/src/wp_map_tools:srv/GetWaypointByName.srv"
-  ]
-}

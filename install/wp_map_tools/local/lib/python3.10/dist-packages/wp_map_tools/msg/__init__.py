@@ -1,1 +1,0 @@
-/home/yy/sight/pfa-nav/build/wp_map_tools/rosidl_generator_py/wp_map_tools/msg/__init__.py

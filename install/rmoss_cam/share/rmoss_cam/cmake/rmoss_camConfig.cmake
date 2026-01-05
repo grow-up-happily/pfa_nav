@@ -1,1 +1,0 @@
-/home/yy/sight/pfa-nav/build/rmoss_cam/ament_cmake_core/rmoss_camConfig.cmake

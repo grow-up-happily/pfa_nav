@@ -1,7 +1,0 @@
-{
-  "package_name": "livox_ros_driver2",
-  "non_idl_tuples": [
-    "/home/yy/sight/pfa-nav/src/pb2025_sentry_nav/livox_ros_driver2:msg/CustomPoint.msg",
-    "/home/yy/sight/pfa-nav/src/pb2025_sentry_nav/livox_ros_driver2:msg/CustomMsg.msg"
-  ]
-}

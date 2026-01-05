@@ -1,1 +1,0 @@
-/home/yy/sight/pfa-nav/src/rmoss_core/rmoss_cam/include/rmoss_cam/cam_interface.hpp

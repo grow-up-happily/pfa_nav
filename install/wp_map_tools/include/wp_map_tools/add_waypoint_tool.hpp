@@ -1,1 +1,0 @@
-/home/yy/sight/pfa-nav/src/wp_map_tools/include/wp_map_tools/add_waypoint_tool.hpp

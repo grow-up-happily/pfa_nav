@@ -1,1 +1,0 @@
-RfidStatus[] robot_rfid_status

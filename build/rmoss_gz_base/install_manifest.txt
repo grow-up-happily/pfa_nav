@@ -1,3 +1,0 @@
-/home/yy/sight/pfa-nav/install/rmoss_gz_base/lib/librmoss_gz_base.so
-/home/yy/sight/pfa-nav/install/rmoss_gz_base/share/rmoss_gz_base/cmake/rmoss_gz_baseExport.cmake
-/home/yy/sight/pfa-nav/install/rmoss_gz_base/share/rmoss_gz_base/cmake/rmoss_gz_baseExport-release.cmake

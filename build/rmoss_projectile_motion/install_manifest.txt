@@ -1,3 +1,0 @@
-/home/yy/sight/pfa-nav/install/rmoss_projectile_motion/lib/librmoss_projectile_motion.so
-/home/yy/sight/pfa-nav/install/rmoss_projectile_motion/share/rmoss_projectile_motion/cmake/rmoss_projectile_motionExport.cmake
-/home/yy/sight/pfa-nav/install/rmoss_projectile_motion/share/rmoss_projectile_motion/cmake/rmoss_projectile_motionExport-release.cmake

@@ -1,3 +1,0 @@
-
-# response
-bool success

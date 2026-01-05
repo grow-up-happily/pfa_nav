@@ -1,1 +1,0 @@
-/home/yy/sight/pfa-nav/src/pb2025_sentry_nav/point_lio/launch/point_lio.launch.py

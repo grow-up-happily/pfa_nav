@@ -1,6 +1,0 @@
-/home/yy/sight/pfa-nav/install/rmoss_cam/lib/librmoss_cam.so
-/home/yy/sight/pfa-nav/install/rmoss_cam/lib/libusb_cam_component.so
-/home/yy/sight/pfa-nav/install/rmoss_cam/lib/libvirtual_cam_component.so
-/home/yy/sight/pfa-nav/install/rmoss_cam/lib/libimage_task_demo_component.so
-/home/yy/sight/pfa-nav/install/rmoss_cam/share/rmoss_cam/cmake/export_rmoss_camExport.cmake
-/home/yy/sight/pfa-nav/install/rmoss_cam/share/rmoss_cam/cmake/export_rmoss_camExport-release.cmake

@@ -1,1 +1,0 @@
-/home/yy/sight/pfa-nav/src/pb2025_sentry_nav/livox_ros_driver2/launch/rviz_mixed.py

@@ -1,3 +1,0 @@
-/home/yy/sight/pfa-nav/install/rmoss_util/lib/librmoss_util.so
-/home/yy/sight/pfa-nav/install/rmoss_util/share/rmoss_util/cmake/rmoss_utilExport.cmake
-/home/yy/sight/pfa-nav/install/rmoss_util/share/rmoss_util/cmake/rmoss_utilExport-release.cmake

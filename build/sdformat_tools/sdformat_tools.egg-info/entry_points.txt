@@ -1,4 +1,0 @@
-[console_scripts]
-sdf2urdf = sdformat_tools.sdf2urdf:sdf2urdf_main
-xmacro4sdf = sdformat_tools.xmacro4sdf:xmacro4sdf_main
-

@@ -1,1 +1,0 @@
-/home/yy/sight/pfa-nav/src/pb2025_sentry_nav/small_gicp_relocalization/include/small_gicp_relocalization/small_gicp_relocalization.hpp

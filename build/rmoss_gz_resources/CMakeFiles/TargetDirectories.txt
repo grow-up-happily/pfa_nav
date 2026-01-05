@@ -1,9 +1,0 @@
-/home/yy/sight/pfa-nav/build/rmoss_gz_resources/CMakeFiles/uninstall.dir
-/home/yy/sight/pfa-nav/build/rmoss_gz_resources/CMakeFiles/rmoss_gz_resources_uninstall.dir
-/home/yy/sight/pfa-nav/build/rmoss_gz_resources/CMakeFiles/test.dir
-/home/yy/sight/pfa-nav/build/rmoss_gz_resources/CMakeFiles/edit_cache.dir
-/home/yy/sight/pfa-nav/build/rmoss_gz_resources/CMakeFiles/rebuild_cache.dir
-/home/yy/sight/pfa-nav/build/rmoss_gz_resources/CMakeFiles/list_install_components.dir
-/home/yy/sight/pfa-nav/build/rmoss_gz_resources/CMakeFiles/install.dir
-/home/yy/sight/pfa-nav/build/rmoss_gz_resources/CMakeFiles/install/local.dir
-/home/yy/sight/pfa-nav/build/rmoss_gz_resources/CMakeFiles/install/strip.dir

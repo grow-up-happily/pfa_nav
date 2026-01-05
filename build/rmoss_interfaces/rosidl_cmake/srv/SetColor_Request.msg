@@ -1,5 +1,0 @@
-# constants 
-uint8 RED = 1
-uint8 BLUE = 2
-# request
-uint8 color

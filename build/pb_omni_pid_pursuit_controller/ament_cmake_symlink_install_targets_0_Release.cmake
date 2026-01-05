@@ -1,1 +1,0 @@
-ament_cmake_symlink_install_targets("TARGET_FILES" "/home/yy/sight/pfa-nav/build/pb_omni_pid_pursuit_controller/libpb_omni_pid_pursuit_controller.so" "TARGETS" "pb_omni_pid_pursuit_controller" "ARCHIVE_DESTINATION" "lib" "LIBRARY_DESTINATION" "lib" "RUNTIME_DESTINATION" "bin")

@@ -1,1 +1,0 @@
-/home/yy/sight/pfa-nav/build/fake_vel_transform/ament_cmake_environment_hooks/local_setup.zsh

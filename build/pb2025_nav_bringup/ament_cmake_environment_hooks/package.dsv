@@ -1,4 +1,0 @@
-source;share/pb2025_nav_bringup/local_setup.bash
-source;share/pb2025_nav_bringup/local_setup.dsv
-source;share/pb2025_nav_bringup/local_setup.sh
-source;share/pb2025_nav_bringup/local_setup.zsh

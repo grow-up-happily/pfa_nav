@@ -1,3 +1,0 @@
-rmoss_cam::UsbCamNode;lib/libusb_cam_component.so
-rmoss_cam::VirtualCamNode;lib/libvirtual_cam_component.so
-rmoss_cam::ImageTaskDemoNode;lib/libimage_task_demo_component.so

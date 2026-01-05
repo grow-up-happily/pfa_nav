@@ -1,6 +1,0 @@
-Invoking command in '/home/yy/sight/pfa-nav/build/small_gicp': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/yy/sight/pfa-nav/src/small_gicp -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/home/yy/sight/pfa-nav/install/small_gicp
-Invoked command in '/home/yy/sight/pfa-nav/build/small_gicp' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/yy/sight/pfa-nav/src/small_gicp -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/home/yy/sight/pfa-nav/install/small_gicp
-Invoking command in '/home/yy/sight/pfa-nav/build/small_gicp': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/yy/sight/pfa-nav/build/small_gicp -- -j20 -l20
-Invoked command in '/home/yy/sight/pfa-nav/build/small_gicp' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/yy/sight/pfa-nav/build/small_gicp -- -j20 -l20
-Invoking command in '/home/yy/sight/pfa-nav/build/small_gicp': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/yy/sight/pfa-nav/build/small_gicp
-Invoked command in '/home/yy/sight/pfa-nav/build/small_gicp' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/yy/sight/pfa-nav/build/small_gicp

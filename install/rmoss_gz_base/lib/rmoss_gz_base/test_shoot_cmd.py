@@ -1,1 +1,0 @@
-/home/yy/sight/pfa-nav/src/rmoss_gazebo/rmoss_gz_base/scripts/test_shoot_cmd.py

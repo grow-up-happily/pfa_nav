@@ -1,1 +1,0 @@
-/home/yy/sight/pfa-nav/build/rmoss_interfaces/rosidl_typesupport_introspection_cpp/rmoss_interfaces/srv/detail/get_camera_info__rosidl_typesupport_introspection_cpp.hpp

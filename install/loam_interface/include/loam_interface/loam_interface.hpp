@@ -1,1 +1,0 @@
-/home/yy/sight/pfa-nav/src/pb2025_sentry_nav/loam_interface/include/loam_interface/loam_interface.hpp

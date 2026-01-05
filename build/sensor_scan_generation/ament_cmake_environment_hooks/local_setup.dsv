@@ -1,3 +1,0 @@
-source;share/sensor_scan_generation/environment/ament_prefix_path.sh
-source;share/sensor_scan_generation/environment/library_path.sh
-source;share/sensor_scan_generation/environment/path.sh

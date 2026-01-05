@@ -1,1 +1,0 @@
-/home/yy/sight/pfa-nav/build/pb_nav2_plugins/ament_cmake_core/pb_nav2_pluginsConfig-version.cmake

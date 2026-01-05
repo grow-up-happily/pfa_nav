@@ -1,1 +1,0 @@
-/home/yy/sight/pfa-nav/build/livox_ros_driver2/rosidl_generator_cpp/livox_ros_driver2/msg/detail/custom_msg__struct.hpp

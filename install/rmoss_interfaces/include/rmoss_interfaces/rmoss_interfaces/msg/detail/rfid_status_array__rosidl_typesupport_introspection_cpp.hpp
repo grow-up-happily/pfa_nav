@@ -1,1 +1,0 @@
-/home/yy/sight/pfa-nav/build/rmoss_interfaces/rosidl_typesupport_introspection_cpp/rmoss_interfaces/msg/detail/rfid_status_array__rosidl_typesupport_introspection_cpp.hpp

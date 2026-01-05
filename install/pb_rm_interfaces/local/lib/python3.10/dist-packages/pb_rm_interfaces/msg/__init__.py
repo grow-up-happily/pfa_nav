@@ -1,1 +1,0 @@
-/home/yy/sight/pfa-nav/build/pb_rm_interfaces/rosidl_generator_py/pb_rm_interfaces/msg/__init__.py

@@ -1,1 +1,0 @@
-ament_cmake_symlink_install_targets("TARGET_FILES" "/home/yy/sight/pfa-nav/build/small_gicp_relocalization/libsmall_gicp_relocalization.so" "TARGETS" "small_gicp_relocalization" "ARCHIVE_DESTINATION" "lib" "LIBRARY_DESTINATION" "lib" "RUNTIME_DESTINATION" "bin")

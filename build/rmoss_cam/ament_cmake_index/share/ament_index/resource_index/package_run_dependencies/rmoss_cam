@@ -1,1 +1,0 @@
-rclcpp;rmoss_interfaces;rmoss_util;sensor_msgs;libopencv-dev;cv_bridge;camera_info_manager;image_transport;ament_lint_auto;ament_lint_common;ament_index_cpp

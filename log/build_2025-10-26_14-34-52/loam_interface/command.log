@@ -1,4 +1,0 @@
-Invoking command in '/home/yy/sight/pfa-nav/build/loam_interface': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/yy/sight/pfa-nav/build/loam_interface -- -j20 -l20
-Invoked command in '/home/yy/sight/pfa-nav/build/loam_interface' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/yy/sight/pfa-nav/build/loam_interface -- -j20 -l20
-Invoking command in '/home/yy/sight/pfa-nav/build/loam_interface': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/yy/sight/pfa-nav/build/loam_interface
-Invoked command in '/home/yy/sight/pfa-nav/build/loam_interface' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/yy/sight/pfa-nav/build/loam_interface

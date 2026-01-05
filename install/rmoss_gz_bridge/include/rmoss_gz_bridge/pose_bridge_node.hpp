@@ -1,1 +1,0 @@
-/home/yy/sight/pfa-nav/src/rmoss_gazebo/rmoss_gz_bridge/include/rmoss_gz_bridge/pose_bridge_node.hpp

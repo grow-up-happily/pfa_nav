@@ -1,1 +1,0 @@
-/home/yy/sight/pfa-nav/src/auto_aim_interfaces/msg/TrackerInfo.msg

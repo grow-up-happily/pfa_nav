@@ -1,1 +1,0 @@
-ament_cmake_symlink_install_targets("TARGET_FILES" "/home/yy/sight/pfa-nav/build/wp_map_tools/rosidl_generator_py/wp_map_tools/wp_map_tools_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so" "TARGETS" "wp_map_tools__rosidl_typesupport_c__pyext" "DESTINATION" "local/lib/python3.10/dist-packages/wp_map_tools")
