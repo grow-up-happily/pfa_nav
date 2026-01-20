@@ -14,7 +14,7 @@ int main(int argc, char** argv)
     std::string strSaveFile;
     const char* home = getenv("HOME");
     strSaveFile = home;
-    strSaveFile += "/sight/pb2025/waypoints.yaml";
+    strSaveFile += "/sight/pfa-nav/waypoints.yaml";
 
     for (int i = 1; i < argc; i++)
     {
