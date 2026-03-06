@@ -52,9 +52,13 @@ private:
     const tf2::Transform & transform, std::string parent_frame, const std::string & child_frame,
     const rclcpp::Time & stamp);
 
+  // Force transform to 2D plane (z=0, roll=0, pitch=0)
+  tf2::Transform flatten2D(const tf2::Transform & transform);
+
   std::string lidar_frame_;
   std::string base_frame_;
   std::string robot_base_frame_;
+  bool force_2d_mode_;
 
   std::unique_ptr<tf2_ros::TransformBroadcaster> br_;
   rclcpp::Publisher<sensor_msgs::msg::PointCloud2>::SharedPtr pub_laser_cloud_;

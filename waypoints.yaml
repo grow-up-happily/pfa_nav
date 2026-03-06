@@ -1,61 +1,41 @@
-Waypoints_Num: 6
+Waypoints_Num: 4
 Waypoint_1:
   Type: Waypoint
   Name: 1
-  Pos_x: 5.32467
-  Pos_y: -8.21397
+  Pos_x: 2.22335
+  Pos_y: 4.6224
   Pos_z: 0
   Ori_x: 0
   Ori_y: 0
-  Ori_z: 0.020901
-  Ori_w: 0.999782
+  Ori_z: 0.277817
+  Ori_w: 0.960634
 Waypoint_2:
   Type: Waypoint
   Name: 2
-  Pos_x: 11.602
-  Pos_y: 2.11411
+  Pos_x: 5.34186
+  Pos_y: -5.577
   Pos_z: 0
   Ori_x: 0
   Ori_y: 0
-  Ori_z: 0.231061
-  Ori_w: 0.972939
+  Ori_z: -0.647771
+  Ori_w: 0.761835
 Waypoint_3:
   Type: Waypoint
   Name: 3
-  Pos_x: 16.039
-  Pos_y: -8.13008
+  Pos_x: 7.56378
+  Pos_y: -7.96001
   Pos_z: 0
   Ori_x: 0
   Ori_y: 0
-  Ori_z: 0.999933
-  Ori_w: 0.0115334
+  Ori_z: 0.0166405
+  Ori_w: 0.999862
 Waypoint_4:
   Type: Waypoint
   Name: 4
-  Pos_x: 20.0491
-  Pos_y: -0.733446
+  Pos_x: 1.54416
+  Pos_y: -1.42821
   Pos_z: 0
   Ori_x: 0
   Ori_y: 0
-  Ori_z: 0.796265
-  Ori_w: 0.604948
-Waypoint_5:
-  Type: Waypoint
-  Name: 5
-  Pos_x: 11.8514
-  Pos_y: -4.14573
-  Pos_z: 0
-  Ori_x: 0
-  Ori_y: 0
-  Ori_z: -0.854759
-  Ori_w: 0.519025
-Waypoint_6:
-  Type: Waypoint
-  Name: 6
-  Pos_x: -0.182968
-  Pos_y: -6.73185
-  Pos_z: 0
-  Ori_x: 0
-  Ori_y: 0
-  Ori_z: -0.753286
-  Ori_w: 0.657693
+  Ori_z: 0.810401
+  Ori_w: 0.585876

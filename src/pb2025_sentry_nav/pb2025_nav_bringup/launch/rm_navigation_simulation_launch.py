@@ -77,7 +77,7 @@ def generate_launch_description():
 
     declare_world_cmd = DeclareLaunchArgument(
         "world",
-        default_value="rmuc_2025",
+        default_value="rmuc_2026",
         description="Select world: 'rmul_2024' or 'rmuc_2024' or 'rmul_2025' or 'rmuc_2025' or 'game' (map file share the same name as the this parameter)",
     )
 
@@ -93,12 +93,8 @@ def generate_launch_description():
 
     declare_prior_pcd_file_cmd = DeclareLaunchArgument(
         "prior_pcd_file",
-        default_value=[
-            TextSubstitution(text=os.path.join(bringup_dir, "pcd", "simulation", "")),
-            world,
-            TextSubstitution(text=".pcd"),
-        ],
-        description="Full path to prior pcd file to load",
+        default_value=os.path.join(bringup_dir, "pcd", "simulation", "scans.pcd"),
+        description="Full path to prior pcd file to load. Override this when using a world-specific prior map.",
     )
 
     declare_use_sim_time_cmd = DeclareLaunchArgument(

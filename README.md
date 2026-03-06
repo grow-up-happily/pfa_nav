@@ -246,5 +246,8 @@ ros2 bag play bag/bag_0.db3 --clock
 
 遇到这种情况，去进程找gazebo-server残留kill -9 进程号。再试一次就可以。
 
+本项目引入 namespace 的设计，与 ROS 相关的 node, topic, action 等都加入了 namespace 前缀。如需查看 tf tree，请使用命令: 
+ros2 run rqt_tf_tree rqt_tf_tree --ros-args -r /tf:=tf -r /tf_static:=tf_static -r __ns:=/red_standard_robot1
+
 # pfa-nav
 

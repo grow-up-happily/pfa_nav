@@ -7,6 +7,7 @@ from nav2_msgs.action import NavigateToPose
 from rclpy.action import ActionClient
 import yaml
 import argparse
+import time
 
 
 class AutoNavNode(Node):
@@ -33,7 +34,7 @@ class AutoNavNode(Node):
             raise ValueError("目标点列表为空")
         
         # 导航客户端
-        self.nav_ac = ActionClient(self, NavigateToPose, '/navigate_to_pose')
+        self.nav_ac = ActionClient(self, NavigateToPose, '/red_standard_robot1/navigate_to_pose')
         
         # 循环导航状态
         self.current_idx = 0
@@ -153,6 +154,7 @@ class AutoNavNode(Node):
         
         if status == 4:  # GoalStatus.STATUS_SUCCEEDED
             self.get_logger().info('✓ 成功到达目标点')
+            time.sleep(0.5)
         else:
             self.get_logger().warn(f'✗ 导航失败，状态码: {status}')
         

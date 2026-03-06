@@ -1,6 +1,15 @@
 <?xml version='1.0' encoding='utf-8'?>
 <sdf version='1.7'>
   <world name='default'>
+    <!-- Physics settings: 降低更新频率以减少CPU占用 -->
+    <!-- real_time_update_rate: 默认1000Hz，降到250Hz -->
+    <!-- max_step_size: 默认0.001s，增大到0.004s -->
+    <physics name="default_physics" type="ode">
+      <max_step_size>0.01</max_step_size>
+      <real_time_update_rate>100</real_time_update_rate>
+      <real_time_factor>1.0</real_time_factor>
+    </physics>
+
     <!-- Physics -->
     <plugin filename="libignition-gazebo-physics-system.so" name="ignition::gazebo::systems::Physics">
     </plugin>

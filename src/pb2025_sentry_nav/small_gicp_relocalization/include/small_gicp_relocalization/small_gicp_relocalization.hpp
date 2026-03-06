@@ -65,6 +65,7 @@ private:
   std::string lidar_frame_;
   std::string current_scan_frame_id_;
   rclcpp::Time last_scan_time_;
+  bool registration_enabled_;
   Eigen::Isometry3d result_t_;
   Eigen::Isometry3d previous_result_t_;
 

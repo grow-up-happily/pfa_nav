@@ -1,0 +1,19 @@
+loop_closure_3d:
+  ros__parameters:
+    # Keyframe selection
+    keyframe_distance_threshold: 2.0      # meters (INCREASED to reduce keyframes)
+    keyframe_rotation_threshold: 0.5      # radians (~29 degrees, INCREASED)
+
+    # Loop detection
+    loop_search_radius: 10.0              # meters
+    loop_closure_score_threshold: 0.5     # Lower is better (GICP error)
+    min_keyframes_for_loop: 10            # Minimum keyframes before attempting loop detection
+    skip_recent_keyframes: 5              # Skip the last N keyframes in loop search
+
+    # Point cloud processing
+    downsample_resolution: 0.5            # meters (INCREASED from 0.3 to reduce computation)
+    num_threads: 4                        # Number of threads for GICP
+
+    # Frame names
+    map_frame: "map"
+    odom_frame: "odom"

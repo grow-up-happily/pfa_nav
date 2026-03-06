@@ -25,6 +25,7 @@ namespace small_gicp_relocalization
 
 SmallGicpRelocalizationNode::SmallGicpRelocalizationNode(const rclcpp::NodeOptions & options)
 : Node("small_gicp_relocalization", options),
+  registration_enabled_(true),
   result_t_(Eigen::Isometry3d::Identity()),
   previous_result_t_(Eigen::Isometry3d::Identity())
 {
@@ -75,17 +76,24 @@ SmallGicpRelocalizationNode::SmallGicpRelocalizationNode(const rclcpp::NodeOptio
 
   loadGlobalMap(prior_pcd_file_);
 
-  // Downsample points and convert them into pcl::PointCloud<pcl::PointCovariance>
-  target_ = small_gicp::voxelgrid_sampling_omp<
-    pcl::PointCloud<pcl::PointXYZ>, pcl::PointCloud<pcl::PointCovariance>>(
-    *global_map_, global_leaf_size_);
+  if (global_map_->empty()) {
+    registration_enabled_ = false;
+    RCLCPP_WARN(
+      this->get_logger(),
+      "Prior PCD file is unavailable or empty. Automatic GICP relocalization is disabled.");
+  } else {
+    // Downsample points and convert them into pcl::PointCloud<pcl::PointCovariance>
+    target_ = small_gicp::voxelgrid_sampling_omp<
+      pcl::PointCloud<pcl::PointXYZ>, pcl::PointCloud<pcl::PointCovariance>>(
+      *global_map_, global_leaf_size_);
 
-  // Estimate covariances of points
-  small_gicp::estimate_covariances_omp(*target_, num_neighbors_, num_threads_);
+    // Estimate covariances of points
+    small_gicp::estimate_covariances_omp(*target_, num_neighbors_, num_threads_);
 
-  // Create KdTree for target
-  target_tree_ = std::make_shared<small_gicp::KdTree<pcl::PointCloud<pcl::PointCovariance>>>(
-    target_, small_gicp::KdTreeBuilderOMP(num_threads_));
+    // Create KdTree for target
+    target_tree_ = std::make_shared<small_gicp::KdTree<pcl::PointCloud<pcl::PointCovariance>>>(
+      target_, small_gicp::KdTreeBuilderOMP(num_threads_));
+  }
 
   pcd_sub_ = this->create_subscription<sensor_msgs::msg::PointCloud2>(
     "registered_scan", 10,
@@ -145,6 +153,10 @@ void SmallGicpRelocalizationNode::registeredPcdCallback(
 
 void SmallGicpRelocalizationNode::performRegistration()
 {
+  if (!registration_enabled_) {
+    return;
+  }
+
   if (accumulated_cloud_->empty()) {
     RCLCPP_WARN(this->get_logger(), "No accumulated points to process.");
     return;

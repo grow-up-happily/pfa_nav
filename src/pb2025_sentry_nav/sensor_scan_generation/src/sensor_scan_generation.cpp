@@ -26,10 +26,16 @@ SensorScanGenerationNode::SensorScanGenerationNode(const rclcpp::NodeOptions & o
   this->declare_parameter<std::string>("lidar_frame", "");
   this->declare_parameter<std::string>("base_frame", "");
   this->declare_parameter<std::string>("robot_base_frame", "");
+  this->declare_parameter<bool>("force_2d_mode", false);
 
   this->get_parameter("lidar_frame", lidar_frame_);
   this->get_parameter("base_frame", base_frame_);
   this->get_parameter("robot_base_frame", robot_base_frame_);
+  this->get_parameter("force_2d_mode", force_2d_mode_);
+
+  if (force_2d_mode_) {
+    RCLCPP_INFO(this->get_logger(), "2D mode enabled: z, roll, pitch will be forced to 0");
+  }
 
   tf_buffer_ = std::make_unique<tf2_ros::Buffer>(this->get_clock());
   tf_listener_ = std::make_unique<tf2_ros::TransformListener>(*tf_buffer_);
@@ -100,15 +106,34 @@ tf2::Transform SensorScanGenerationNode::getTransform(
   }
 }
 
+tf2::Transform SensorScanGenerationNode::flatten2D(const tf2::Transform & transform)
+{
+  // Extract yaw only (ignore roll and pitch)
+  tf2::Matrix3x3 mat(transform.getRotation());
+  double roll, pitch, yaw;
+  mat.getRPY(roll, pitch, yaw);
+
+  // Create new transform with z=0, roll=0, pitch=0
+  tf2::Transform flat;
+  flat.setOrigin(tf2::Vector3(transform.getOrigin().x(), transform.getOrigin().y(), 0.0));
+  tf2::Quaternion q;
+  q.setRPY(0.0, 0.0, yaw);
+  flat.setRotation(q);
+
+  return flat;
+}
+
 void SensorScanGenerationNode::publishTransform(
   const tf2::Transform & transform, const std::string & parent_frame,
   const std::string & child_frame, const rclcpp::Time & stamp)
 {
+  tf2::Transform tf_out = force_2d_mode_ ? flatten2D(transform) : transform;
+
   geometry_msgs::msg::TransformStamped transform_msg;
   transform_msg.header.stamp = stamp;
   transform_msg.header.frame_id = parent_frame;
   transform_msg.child_frame_id = child_frame;
-  transform_msg.transform = tf2::toMsg(transform);
+  transform_msg.transform = tf2::toMsg(tf_out);
   br_->sendTransform(transform_msg);
 }
 
@@ -116,16 +141,18 @@ void SensorScanGenerationNode::publishOdometry(
   const tf2::Transform & transform, std::string parent_frame, const std::string & child_frame,
   const rclcpp::Time & stamp)
 {
+  tf2::Transform tf_out = force_2d_mode_ ? flatten2D(transform) : transform;
+
   nav_msgs::msg::Odometry out;
   out.header.stamp = stamp;
   out.header.frame_id = parent_frame;
   out.child_frame_id = child_frame;
 
-  const auto & origin = transform.getOrigin();
+  const auto & origin = tf_out.getOrigin();
   out.pose.pose.position.x = origin.x();
   out.pose.pose.position.y = origin.y();
   out.pose.pose.position.z = origin.z();
-  out.pose.pose.orientation = tf2::toMsg(transform.getRotation());
+  out.pose.pose.orientation = tf2::toMsg(tf_out.getRotation());
 
   static tf2::Transform previous_transform;
   static auto previous_time = std::chrono::steady_clock::now();
@@ -136,10 +163,10 @@ void SensorScanGenerationNode::publishOdometry(
     1e-9;
 
   if (dt > 0) {
-    const auto linear_velocity = (transform.getOrigin() - previous_transform.getOrigin()) / dt;
+    const auto linear_velocity = (tf_out.getOrigin() - previous_transform.getOrigin()) / dt;
 
     const tf2::Quaternion q_diff =
-      transform.getRotation() * previous_transform.getRotation().inverse();
+      tf_out.getRotation() * previous_transform.getRotation().inverse();
     const auto angular_velocity = q_diff.getAxis() * q_diff.getAngle() / dt;
 
     out.twist.twist.linear.x = linear_velocity.x();
@@ -150,7 +177,7 @@ void SensorScanGenerationNode::publishOdometry(
     out.twist.twist.angular.z = angular_velocity.z();
   }
 
-  previous_transform = transform;
+  previous_transform = tf_out;
   previous_time = current_time;
 
   pub_chassis_odometry_->publish(out);

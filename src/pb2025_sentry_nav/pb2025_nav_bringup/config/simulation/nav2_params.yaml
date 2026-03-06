@@ -98,6 +98,7 @@ sensor_scan_generation:
     lidar_frame: "front_mid360"
     base_frame: "base_footprint"
     robot_base_frame: "gimbal_yaw"
+    force_2d_mode: true  # Force z=0, roll=0, pitch=0 to prevent Z drift
 
 terrain_analysis:
   ros__parameters:

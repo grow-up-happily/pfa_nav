@@ -32,7 +32,7 @@ def generate_launch_description():
     map_file = os.path.join(
         get_package_share_directory('pb2025_nav_bringup'),
         'map',
-        'simulation/rmuc_2025.yaml'
+        'simulation/rmuc_2024.yaml'
     )
 
     # 创建map_server节点
