@@ -20,21 +20,10 @@ find_package(pcl_ros REQUIRED)
 find_package(pcl_conversions REQUIRED)
 find_package(PCL REQUIRED COMPONENTS common io)
 find_package(Eigen3 REQUIRED)
-
-# Check for small_gicp
-find_path(SMALL_GICP_INCLUDE_DIR small_gicp/pcl/pcl_registration.hpp
-  PATHS /usr/local/include /usr/include
-  PATH_SUFFIXES small_gicp
-)
-
-if(NOT SMALL_GICP_INCLUDE_DIR)
-  message(WARNING "small_gicp not found, using system include paths")
-  set(SMALL_GICP_INCLUDE_DIR "")
-endif()
+find_package(small_gicp REQUIRED)
 
 include_directories(
   include
-  ${SMALL_GICP_INCLUDE_DIR}
   ${PCL_INCLUDE_DIRS}
   ${EIGEN3_INCLUDE_DIRS}
 )
@@ -58,7 +47,7 @@ add_library(loop_closure_node SHARED
   src/loop_closure_node.cpp
 )
 ament_target_dependencies(loop_closure_node ${dependencies})
-target_link_libraries(loop_closure_node ${PCL_LIBRARIES})
+target_link_libraries(loop_closure_node ${PCL_LIBRARIES} small_gicp::small_gicp)
 
 # Register as component
 rclcpp_components_register_node(loop_closure_node
