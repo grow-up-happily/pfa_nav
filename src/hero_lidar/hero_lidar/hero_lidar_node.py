@@ -1,24 +1,32 @@
 #!/usr/bin/env python3
+import math
 import os
+import struct
+from collections import deque
+from statistics import median
 import yaml
 
 import rclpy
-from geometry_msgs.msg import PoseStamped, PoseWithCovarianceStamped, TransformStamped
+from geometry_msgs.msg import PoseStamped, TransformStamped
 from rclpy.duration import Duration
 from rclpy.node import Node
+import serial
 from tf2_ros import Buffer, TransformBroadcaster, TransformListener
 
 
 class WaypointStaticPublisher(Node):
-    """持续发布 map->base TF，支持 waypoint 初始值和 RViz Pose 工具更新。"""
+    """持续发布 map->base TF，支持 waypoint 初始值和 hero_pose 更新。"""
 
     def __init__(self):
         super().__init__('waypoint_static_publisher')
 
         self.declare_parameter('waypoints_file', '')
-        self.declare_parameter('pose_topic', '/hero_lidar/base_pose')
-        self.declare_parameter('initial_pose_topic', '/initialpose')
+        self.declare_parameter('pose_topic', '/hero_pose')
         self.declare_parameter('publish_rate', 10.0)
+        self.declare_parameter('serial_port', '/dev/ttyACM0')
+        self.declare_parameter('serial_baud_rate', 115200)
+        self.declare_parameter('distance_median_window', 7)
+        self.declare_parameter('distance_median_deadband', 0.05)
 
         self.parent_frame = 'map'
         self.child_frame = 'base'
@@ -27,6 +35,33 @@ class WaypointStaticPublisher(Node):
         self.tf_buffer = Buffer()
         self.tf_listener = TransformListener(self.tf_buffer, self)
         self.base_pose = None
+        self.serial_device = self.get_parameter('serial_port').value
+        self.serial_port = None
+        self.distance_median_window = int(
+            self.get_parameter('distance_median_window').value
+        )
+        self.distance_median_deadband = float(
+            self.get_parameter('distance_median_deadband').value
+        )
+        if self.distance_median_window < 1:
+            self.get_logger().warning(
+                'distance_median_window must be >= 1, fallback to 1.'
+            )
+            self.distance_median_window = 1
+        if self.distance_median_window % 2 == 0:
+            self.distance_median_window += 1
+            self.get_logger().warning(
+                'distance_median_window should be odd, auto-adjusted to '
+                f'{self.distance_median_window}.'
+            )
+        if self.distance_median_deadband < 0.0:
+            self.get_logger().warning(
+                'distance_median_deadband must be >= 0, fallback to 0.0.'
+            )
+            self.distance_median_deadband = 0.0
+        self.distance_history = deque(maxlen=self.distance_median_window)
+
+        self._init_serial()
 
         waypoints_file = self.get_parameter('waypoints_file').value
         self._load_initial_pose_from_waypoints(waypoints_file)
@@ -40,19 +75,7 @@ class WaypointStaticPublisher(Node):
                 10,
             )
             self.get_logger().info(
-                f'Listening for hero_lidar PoseStamped updates on {pose_topic}.'
-            )
-
-        initial_pose_topic = self.get_parameter('initial_pose_topic').value
-        if initial_pose_topic:
-            self.initial_pose_sub = self.create_subscription(
-                PoseWithCovarianceStamped,
-                initial_pose_topic,
-                self.initial_pose_callback,
-                10,
-            )
-            self.get_logger().info(
-                f'Listening for RViz initial pose updates on {initial_pose_topic}.'
+                f'Listening for hero_pose PoseStamped updates on {pose_topic}.'
             )
 
         publish_rate = float(self.get_parameter('publish_rate').value)
@@ -64,6 +87,86 @@ class WaypointStaticPublisher(Node):
 
         self.create_timer(1.0 / publish_rate, self.publish_transform)
         self.create_timer(1.0, self._print_chassis_base)
+        self.create_timer(2.0, self._check_serial_connection)
+
+    def _check_serial_connection(self):
+        if self.serial_port is None:
+            self.get_logger().info(f'Trying to connect to serial port {self.serial_device}...')
+            self._init_serial()
+
+    def _init_serial(self):
+        if self.serial_port is not None:
+           return
+
+        baud_rate = int(self.get_parameter('serial_baud_rate').value)
+        try:
+            self.serial_port = serial.Serial(self.serial_device, baud_rate, timeout=0.1, write_timeout=0.1)
+            self.get_logger().info(
+                f'Opened gimbal serial port {self.serial_device} @ {baud_rate}.'
+            )
+        except Exception as exc:
+            self.serial_port = None
+            self.get_logger().warn(
+                f'Failed to open gimbal serial port {self.serial_device}: {exc}'
+            )
+
+    def _crc16(self, data: bytes) -> int:
+        crc = 0xFFFF
+        for byte in data:
+            crc ^= byte
+            for _ in range(8):
+                if crc & 0x0001:
+                    crc = (crc >> 1) ^ 0x8408
+                else:
+                    crc >>= 1
+        return crc & 0xFFFF
+
+    def _send_gimbal_packet(self, vx: float, vy: float):
+        if self.serial_port is None:
+            return
+
+        payload = struct.pack(
+            '<2sBffffffff',
+            b'SP',
+            0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            float(vx),
+            float(vy),
+        )
+        packet = payload + struct.pack('<H', self._crc16(payload))
+
+        try:
+            self.serial_port.write(packet)
+        except Exception:
+            try:
+                self.serial_port.close()
+            except Exception:
+                pass
+            self.serial_port = None
+
+    def _filter_distance_against_history_median(self, x: float, y: float):
+        raw_distance = math.hypot(x, y)
+        raw_heading = math.atan2(y, x)
+
+        if self.distance_history:
+            history_median = median(self.distance_history)
+            if abs(raw_distance - history_median) <= self.distance_median_deadband:
+                filtered_distance = history_median
+            else:
+                filtered_distance = raw_distance
+        else:
+            history_median = raw_distance
+            filtered_distance = raw_distance
+
+        self.distance_history.append(raw_distance)
+        filtered_x = filtered_distance * math.cos(raw_heading)
+        filtered_y = filtered_distance * math.sin(raw_heading)
+        return raw_distance, history_median, filtered_distance, filtered_x, filtered_y
 
     def _load_initial_pose_from_waypoints(self, waypoints_file: str):
         waypoint_path = waypoints_file or os.path.join(os.getcwd(), 'waypoints.yaml')
@@ -72,7 +175,7 @@ class WaypointStaticPublisher(Node):
                 self.get_logger().error(f'waypoints file not found: {waypoint_path}')
             else:
                 self.get_logger().warning(
-                    f'Waypoint file not found: {waypoint_path}. Waiting for RViz pose updates.'
+                    f'Waypoint file not found: {waypoint_path}. Waiting for hero_pose updates.'
                 )
             return
 
@@ -172,20 +275,7 @@ class WaypointStaticPublisher(Node):
             pose.orientation.y,
             pose.orientation.z,
             pose.orientation.w,
-            'RViz hero_lidar pose',
-        )
-
-    def initial_pose_callback(self, msg: PoseWithCovarianceStamped):
-        pose = msg.pose.pose
-        self._update_pose(
-            pose.position.x,
-            pose.position.y,
-            pose.position.z,
-            pose.orientation.x,
-            pose.orientation.y,
-            pose.orientation.z,
-            pose.orientation.w,
-            'RViz initialpose',
+            'hero_pose',
         )
 
     def publish_transform(self):
@@ -198,7 +288,7 @@ class WaypointStaticPublisher(Node):
         transform.child_frame_id = self.child_frame
         transform.transform.translation.x = self.base_pose['x']
         transform.transform.translation.y = self.base_pose['y']
-        transform.transform.translation.z = self.base_pose['z']
+        transform.transform.translation.z = 0.0
         transform.transform.rotation.x = self.base_pose['qx']
         transform.transform.rotation.y = self.base_pose['qy']
         transform.transform.rotation.z = self.base_pose['qz']
@@ -207,6 +297,36 @@ class WaypointStaticPublisher(Node):
         self.broadcaster.sendTransform(transform)
 
     def _print_chassis_base(self):
+        serial_status = (
+            f'Serial: {self.serial_device} connected'
+            if self.serial_port is not None
+            else ''
+        )
+
+        try:
+            t = self.tf_buffer.lookup_transform('map', 'odom', rclpy.time.Time(), timeout=Duration(seconds=0.0))
+            p = t.transform.translation
+            d = (p.x**2 + p.y**2)**0.5
+            msg_mo = f'map->odom:({p.x:.2f},{p.y:.2f},d={d:.2f})'
+        except Exception:
+            msg_mo = 'map->odom:N/A'
+
+        try:
+            t = self.tf_buffer.lookup_transform('odom', 'base_footprint', rclpy.time.Time(), timeout=Duration(seconds=0.0))
+            p = t.transform.translation
+            d = (p.x**2 + p.y**2)**0.5
+            msg_ob = f'odom->base_footprint:({p.x:.2f},{p.y:.2f},d={d:.2f})'
+        except Exception:
+            msg_ob = 'odom->base_footprint:N/A'
+
+        try:
+            t = self.tf_buffer.lookup_transform('map', 'base_footprint', rclpy.time.Time(), timeout=Duration(seconds=0.0))
+            p = t.transform.translation
+            d = (p.x**2 + p.y**2)**0.5
+            msg_mb = f'map->base_footprint:({p.x:.2f},{p.y:.2f},d={d:.2f})'
+        except Exception:
+            msg_mb = 'map->base_footprint:N/A'
+
         target_frame = 'base_footprint'
         source_frame = 'base'
         try:
@@ -217,13 +337,50 @@ class WaypointStaticPublisher(Node):
                 timeout=Duration(seconds=0.5),
             )
             translation = trans.transform.translation
-            rotation = trans.transform.rotation
-            self.get_logger().info(
-                f'{target_frame}->{source_frame}: trans=({translation.x:.3f}, {translation.y:.3f}, {translation.z:.3f}), '
-                f'quat=({rotation.x:.3f}, {rotation.y:.3f}, {rotation.z:.3f}, {rotation.w:.3f})'
+            translation.z = 0.0
+            raw_distance, history_median, filtered_distance, send_x, send_y = (
+                self._filter_distance_against_history_median(translation.x, translation.y)
             )
+            self.get_logger().info(
+                f'{serial_status} | {msg_mo}\n'
+                f'{msg_ob}\n'
+                f'{msg_mb}\n'
+                f'{target_frame}->{source_frame}: '
+                f'dist_raw={raw_distance:.3f} | '
+                f'dist_med={history_median:.3f} | '
+                f'dist_send={filtered_distance:.3f} | '
+                f'trans=({translation.x:.3f}, {translation.y:.3f}, {translation.z:.3f}) | '
+                f'send: vx={send_x:.3f}, vy={send_y:.3f}, vz={translation.z:.3f}'
+            )
+            self._send_gimbal_packet(send_x, send_y)
         except Exception as exc:
-            self.get_logger().debug(f'{target_frame}->{source_frame} not available: {exc}')
+            pass
+
+    def save_pose_to_waypoints(self):
+        if self.base_pose is None:
+            return
+
+        waypoints_file = self.get_parameter('waypoints_file').value
+        waypoint_path = waypoints_file or os.path.join(os.getcwd(), 'waypoints.yaml')
+
+        data = {
+            'waypoint_1': {
+                'x': self.base_pose['x'],
+                'y': self.base_pose['y'],
+                'z': self.base_pose['z'],
+                'qx': self.base_pose['qx'],
+                'qy': self.base_pose['qy'],
+                'qz': self.base_pose['qz'],
+                'qw': self.base_pose['qw'],
+            }
+        }
+
+        try:
+            with open(waypoint_path, 'w', encoding='utf-8') as file:
+                yaml.dump(data, file, default_flow_style=False)
+            self.get_logger().info(f'Saved current pose to {waypoint_path}')
+        except Exception as exc:
+            self.get_logger().error(f'Failed to save pose to {waypoint_path}: {exc}')
 
 
 def main(args=None):
@@ -236,6 +393,9 @@ def main(args=None):
         pass
     finally:
         if node:
+            node.save_pose_to_waypoints()
+            if node.serial_port is not None:
+                node.serial_port.close()
             node.destroy_node()
         rclpy.shutdown()
 

@@ -3,17 +3,15 @@ import os
 import yaml
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
-from launch.actions import IncludeLaunchDescription
+from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription, OpaqueFunction
 from launch.launch_description_sources import PythonLaunchDescriptionSource
+from launch.substitutions import LaunchConfiguration
 
 
-def generate_launch_description():
+def launch_setup(context):
     pkg_simulator = get_package_share_directory("rmu_gazebo_simulator")
 
-    gz_world_path = os.path.join(pkg_simulator, "config", "gz_world.yaml")
-    with open(gz_world_path) as file:
-        config = yaml.safe_load(file)
-        selected_world = config.get("world")
+    selected_world = LaunchConfiguration("world").perform(context)
 
     world_sdf_path = os.path.join(
         pkg_simulator, "resource", "worlds", f"{selected_world}_world.sdf"
@@ -35,7 +33,6 @@ def generate_launch_description():
             os.path.join(pkg_simulator, "launch", "spawn_robots.launch.py")
         ),
         launch_arguments={
-            "gz_world_path": gz_world_path,
             "world": selected_world,
         }.items(),
     )
@@ -46,10 +43,22 @@ def generate_launch_description():
         )
     )
 
-    ld = LaunchDescription()
+    return [gazebo_launch, spawn_robots_launch, referee_system_launch]
 
-    ld.add_action(gazebo_launch)
-    ld.add_action(spawn_robots_launch)
-    ld.add_action(referee_system_launch)
 
-    return ld
+def generate_launch_description():
+    pkg_simulator = get_package_share_directory("rmu_gazebo_simulator")
+
+    gz_world_path = os.path.join(pkg_simulator, "config", "gz_world.yaml")
+    with open(gz_world_path) as file:
+        config = yaml.safe_load(file)
+        default_world = config.get("world")
+
+    return LaunchDescription([
+        DeclareLaunchArgument(
+            "world",
+            default_value=default_world,
+            description="World name (e.g. rmul_2026, rmuc_2026)",
+        ),
+        OpaqueFunction(function=launch_setup),
+    ])

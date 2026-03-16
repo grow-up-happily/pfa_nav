@@ -25,9 +25,10 @@ def generate_launch_description():
     namespace = LaunchConfiguration("namespace")
     waypoints_file = LaunchConfiguration("waypoints_file")
     pose_topic = LaunchConfiguration("pose_topic")
-    initial_pose_topic = LaunchConfiguration("initial_pose_topic")
     publish_rate = LaunchConfiguration("publish_rate")
     use_sim_time = LaunchConfiguration("use_sim_time")
+    serial_port = LaunchConfiguration("serial_port")
+    serial_baud_rate = LaunchConfiguration("serial_baud_rate")
     
     # Declare the launch arguments
     declare_namespace_cmd = DeclareLaunchArgument(
@@ -44,14 +45,8 @@ def generate_launch_description():
 
     declare_pose_topic_cmd = DeclareLaunchArgument(
         "pose_topic",
-        default_value="/hero_lidar/base_pose",
-        description="PoseStamped topic used by RViz SetGoal / 2D Goal Pose tool.",
-    )
-
-    declare_initial_pose_topic_cmd = DeclareLaunchArgument(
-        "initial_pose_topic",
-        default_value="/initialpose",
-        description="PoseWithCovarianceStamped topic used by RViz 2D Pose Estimate.",
+        default_value="/hero_pose",
+        description="PoseStamped topic used to update map->base.",
     )
 
     declare_publish_rate_cmd = DeclareLaunchArgument(
@@ -66,6 +61,18 @@ def generate_launch_description():
         description="Use simulation clock. Set to False on real hardware.",
     )
 
+    declare_serial_port_cmd = DeclareLaunchArgument(
+        "serial_port",
+        default_value="/dev/gimbal",
+        description="Serial device used for sending gimbal packets.",
+    )
+
+    declare_serial_baud_rate_cmd = DeclareLaunchArgument(
+        "serial_baud_rate",
+        default_value="115200",
+        description="Baud rate used for the gimbal serial device.",
+    )
+
     hero_lidar_node = Node(
         package="hero_lidar",
         executable="hero_lidar",
@@ -75,9 +82,10 @@ def generate_launch_description():
         parameters=[
             {"waypoints_file": waypoints_file},
             {"pose_topic": pose_topic},
-            {"initial_pose_topic": initial_pose_topic},
             {"publish_rate": publish_rate},
             {"use_sim_time": use_sim_time},
+            {"serial_port": serial_port},
+            {"serial_baud_rate": serial_baud_rate},
         ],
         remappings=[
             ("/tf", "tf"),
@@ -91,9 +99,10 @@ def generate_launch_description():
     ld.add_action(declare_namespace_cmd)
     ld.add_action(declare_waypoints_file_cmd)
     ld.add_action(declare_pose_topic_cmd)
-    ld.add_action(declare_initial_pose_topic_cmd)
     ld.add_action(declare_publish_rate_cmd)
     ld.add_action(declare_use_sim_time_cmd)
+    ld.add_action(declare_serial_port_cmd)
+    ld.add_action(declare_serial_baud_rate_cmd)
 
     # Add the node
     ld.add_action(hero_lidar_node)

@@ -249,5 +249,16 @@ ros2 bag play bag/bag_0.db3 --clock
 本项目引入 namespace 的设计，与 ROS 相关的 node, topic, action 等都加入了 namespace 前缀。如需查看 tf tree，请使用命令: 
 ros2 run rqt_tf_tree rqt_tf_tree --ros-args -r /tf:=tf -r /tf_static:=tf_static -r __ns:=/red_standard_robot1
 
+当导航启动失败时报错
+  [rviz2-16] Maximum number of clients reached                    
+
+  [rviz2-16] qt.qpa.xcb: could not connect to display :1
+
+  [rviz2-16] This application failed to start because no Qt platform plugin could be initialized.
+
+rviz不能连接 x11 dispaly显示
+
+  pkill -9 rviz2
+
 # pfa-nav
 
