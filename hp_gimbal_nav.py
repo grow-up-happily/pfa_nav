@@ -59,7 +59,7 @@ class HpGimbalNavNode(Node):
             self.get_logger().error(f"串口连接失败: {e}")
 
         # ── 导航客户端 ──
-        self.nav_ac = ActionClient(self, NavigateToPose, '/red_standard_robot1/navigate_to_pose')
+        self.nav_ac = ActionClient(self, NavigateToPose, '/navigate_to_pose')
         self.sending = False
         self.max_retry = 3
         self.retry_count = 0
@@ -260,7 +260,7 @@ class HpGimbalNavNode(Node):
 
         self.get_logger().info(f"[调试] 正在连接导航服务 (timeout=2.0)...")
         if not self.nav_ac.wait_for_server(timeout_sec=2.0):
-            self.get_logger().warn("导航服务未启动，或 /red_standard_robot1/navigate_to_pose 动作服务器连接超时！")
+            self.get_logger().warn("导航服务未启动，或 /navigate_to_pose 动作服务器连接超时！")
             return
             
         self.get_logger().info(f"[调试] 导航服务已连接。")

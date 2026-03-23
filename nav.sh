@@ -13,7 +13,7 @@ cp src/pb2025_sentry_nav/point_lio/PCD/scans.pcd src/pb2025_sentry_nav/pb2025_na
 echo "✅ 已拷贝 scans.pcd 为 game.pcd"
 
 # 编译
-colcon build --symlink-install --parallel-workers 2 --cmake-args -DCMAKE_BUILD_TYPE=Release
+# colcon build --symlink-install --parallel-workers 2 --cmake-args -DCMAKE_BUILD_TYPE=Release
 if [ $? -ne 0 ]; then
   echo "❌ 编译失败！退出"
   exit 1

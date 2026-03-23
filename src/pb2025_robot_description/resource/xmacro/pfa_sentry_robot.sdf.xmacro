@@ -22,7 +22,7 @@
         <pose>0 0 0.15 0 0 0</pose>
         <xmacro_block name="rm25_example_robot" sticker_type="${global_armor_sticker_type}" chassis_height="${chassis_height}" gimbal_yaw_height="${gimbal_yaw_height}" gimbal_pitch_height="${gimbal_pitch_height}"/>
         <!--livox (降低更新率和采样数以提升仿真性能)-->
-        <xmacro_block name="livox" prefix="front_" parent="chassis" pose="0.0496 -0.14 0.515 -${pi/3} 0 -${pi/2}" update_rate="5" samples="400"/>
+        <xmacro_block name="livox" prefix="front_" parent="chassis" pose="0.16 0.0 0.18 ${pi/6} 0.0 ${pi/2}" update_rate="5" samples="400"/>
         <!--industrial camera (仿真中禁用以提升性能)-->
         <!--<xmacro_block name="industrial_camera" prefix="front_" parent="gimbal_pitch" pose="0.1 0 0.045 0 0 0" update_rate="30" horizontal_fov="1" width="1920" height="1080"/>-->
 

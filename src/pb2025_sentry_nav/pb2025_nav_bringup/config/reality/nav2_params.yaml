@@ -65,8 +65,8 @@ point_lio:
       match_s: 81.0
       ivox_grid_resolution: 0.5
       # 倒置
-      gravity: [  0.0017580259591341019, 0.012590263038873672, 0.9944856762886047 ]            # gravity to be aligned
-      gravity_init: [  0.0017580259591341019, 0.012590263038873672, 0.9944856762886047 ]       # preknown gravity in the first IMU body frame
+      gravity: [  -0.012988494709134102, -0.4942797124385834, -0.8609830737113953]            # gravity to be aligned
+      gravity_init: [   -0.012988494709134102, -0.4942797124385834, -0.8609830737113953 ]       # preknown gravity in the first IMU body frame
       extrinsic_T: [ -0.011, -0.02329, 0.04412 ]
       extrinsic_R: [ 1.0, 0.0, 0.0,
                      0.0, 1.0, 0.0,

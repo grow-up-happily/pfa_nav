@@ -2,15 +2,15 @@
 
 # 建图模式
 
-# 进入工作空间目录
-cd ~/sight/pfa-nav || { echo "❌ 未找到目录"; exit 1; }
-# 脚本所在目录
+# 切换到当前脚本所在的工作空间，避免误用其他同名工作区
+SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+cd "$SCRIPT_DIR" || { echo "❌ 未找到目录"; exit 1; }
 WORKSPACE_DIR=$(pwd)
 
 echo " 开始编译工作空间: $WORKSPACE_DIR"
 
 # 编译，最多使用2个并行线程
-colcon build --symlink-install --parallel-workers 2 --cmake-args -DCMAKE_BUILD_TYPE=Release
+# colcon build --symlink-install --parallel-workers 2 --cmake-args -DCMAKE_BUILD_TYPE=Release
 
 # 检查编译是否成功
 if [ $? -eq 0 ]; then
@@ -27,4 +27,3 @@ if [ $? -eq 0 ]; then
 else
     echo "❌ 编译失败，请检查错误日志。"
 fi
-
