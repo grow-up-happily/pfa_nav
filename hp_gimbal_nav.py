@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# 这是一个集成了导航系统并且控制云台状态、处理二进制TxData协议与底层通信的核心Python节点。
 """
 整合 hp_nav + cmd_vel_to_gimbal：
   - 串口接收：持续读取血量数据，根据血量切换导航点
@@ -59,7 +60,7 @@ class HpGimbalNavNode(Node):
             self.get_logger().error(f"串口连接失败: {e}")
 
         # ── 导航客户端 ──
-        self.nav_ac = ActionClient(self, NavigateToPose, '/navigate_to_pose')
+        self.nav_ac = ActionClient(self, NavigateToPose, '/red_standard_robot1/navigate_to_pose')
         self.sending = False
         self.max_retry = 3
         self.retry_count = 0
@@ -174,10 +175,14 @@ class HpGimbalNavNode(Node):
         return crc & 0xFFFF
 
     def _build_packet(self, vx: float, vy: float) -> bytes:
+        # C++ 结构体按照给定代码等价于：
+        # mode (1 byte) + yaw(4) + yaw_vel(4) + yaw_acc(4) + pitch(4) + pitch_vel(4) + pitch_acc(4) + vx(4) + vy(4)
+        # 注意：这里 C++ 的 `tx_data_` 可能没有包头（无 `b'SP'`），因此需要依据实际电控代码确认。
+        # 假设完全匹配给出的 C++ 结构，不需要 2 字节包头，且 mode 我们暂时填 1（control=true, fire=false）。
+        # 请根据实际需求修改 mode 的值（例如设为 0=不控制）。
         payload = struct.pack(
-            '<2sB8f',
-            b'SP',       # head
-            0,           # mode: 0=不控制
+            '<B8f',      # 1 byte uint8_t, 8 个 float
+            1,           # mode: 1 (control=true, fire=false)
             0.0,         # yaw
             0.0,         # yaw_vel
             0.0,         # yaw_acc
@@ -187,6 +192,7 @@ class HpGimbalNavNode(Node):
             vx,          # vx
             vy,          # vy
         )
+        # 再附加最后 2 个字节的 uint16 crc16
         return payload + struct.pack('<H', self._crc16(payload))
 
     def send_cmd_loop(self):
