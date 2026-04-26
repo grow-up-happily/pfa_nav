@@ -2,10 +2,10 @@
 
 ## Goal
 
-Before Nav2 plans a path, ignore isolated obstacle noise that appears in the custom
-`pb_nav2_costmap_2d::IntensityVoxelLayer`. The filter must be configurable from
-YAML so the required number of nearby occupied grid cells can be tuned without
-rebuilding.
+Before Nav2 plans a path, ignore isolated and small-cluster obstacle noise that
+appears in the custom `pb_nav2_costmap_2d::IntensityVoxelLayer`. The filter must
+be configurable from YAML so the minimum obstacle cluster size can be tuned
+without rebuilding.
 
 ## Current Behavior
 
@@ -17,25 +17,24 @@ enter the costmap and influence SmacPlannerHybrid.
 
 ## Design
 
-Add a small neighborhood filter inside `IntensityVoxelLayer` before cells are
-written to `costmap_`.
+Add a small connected-component filter inside `IntensityVoxelLayer` before cells
+are written to `costmap_`.
 
 The layer will first collect candidate obstacle cells from the current
-observations. It will then keep a candidate only when enough other candidate
-cells exist within a square neighborhood around that cell. Rejected cells are not
-written as lethal obstacles, so the planner sees them as absent.
+observations. It will then group adjacent candidate cells into 8-connected 2D
+components. A component is kept only when it contains enough candidate cells.
+Rejected components are not written as lethal obstacles, so the planner sees them
+as absent.
 
 Configurable parameters:
 
 - `noise_filter_enabled`: enable or disable the filter. Default `false` in code,
   set to `true` in this project's Nav2 configs.
-- `noise_filter_radius_cells`: neighborhood radius in costmap cells. A value of
-  `1` checks the 8 surrounding cells plus the center cell.
-- `noise_filter_min_neighbors`: minimum number of occupied candidate cells in the
-  neighborhood, including the center cell. A value of `2` removes true single-cell
-  noise while preserving pairs and larger clusters.
+- `noise_filter_min_cluster_cells`: minimum number of connected occupied
+  candidate cells needed to keep an obstacle component. A value of `5` removes
+  single-cell noise and a `2x2` four-cell noise block.
 
-The requested "judgment grid count" is `noise_filter_min_neighbors`.
+The requested "judgment grid count" is `noise_filter_min_cluster_cells`.
 
 ## Scope
 
@@ -49,14 +48,13 @@ The filter applies to both local and global costmaps in simulation and reality.
 
 ## Testing
 
-Add focused unit tests for the neighborhood decision logic so parameter changes
+Add focused unit tests for the connected-component keep/drop logic so parameter changes
 are covered without needing to launch ROS. Then build/test `pb_nav2_plugins`.
 
 Manual tuning can start with:
 
 - `noise_filter_enabled: true`
-- `noise_filter_radius_cells: 1`
-- `noise_filter_min_neighbors: 2`
+- `noise_filter_min_cluster_cells: 5`
 
 If real obstacles become too sparse, lower the threshold or disable the filter. If
-noise still leaks through, raise `noise_filter_min_neighbors` to `3`.
+noise still leaks through, raise `noise_filter_min_cluster_cells`.
